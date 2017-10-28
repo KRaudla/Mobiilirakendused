@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using Android.Content;
 
 namespace Excrcises
 {
@@ -10,22 +11,21 @@ namespace Excrcises
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Set our view from the "main" layout resource
-           
             SetContentView(Resource.Layout.Main);//show main view
-            var btnsecondView = FindViewById<Button>(Resource.Id.btnSecondView);//define button variable
+            var secondview = FindViewById<Button>(Resource.Id.btnSecondView);//define button variable
 
-            btnsecondView.Click += delegate
+            secondview.Click += delegate
             {
-                StartActivity(typeof(second_activity));
+                var secondActivity = new Intent(this, typeof(second_activity));
+                secondActivity.PutExtra("MyData", "Hello World");
+                StartActivity(secondActivity);
             };
 
-            var btnChangeText = FindViewById<Button>(Resource.Id.btnChangeText);
-            var txtview1 = FindViewById<TextView>(Resource.Id.txtview1);
-            btnChangeText.Click += delegate
+            var btnChange = FindViewById<Button>(Resource.Id.btnChangeText);
+            var txtchange = FindViewById<TextView>(Resource.Id.txtview1);
+            btnChange.Click += delegate
             {
-                txtview1.Text = "Tekst muutus";
+                txtchange.Text = "Tekst muutus";
             };
         }
     }

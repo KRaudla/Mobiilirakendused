@@ -18,10 +18,15 @@ namespace Excrcises
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.secondLayout);//show second activity view   
 
-            // Create your application here
-           
-            
+
+            var textview1 = FindViewById<TextView>(Resource.Id.txtview1);
+            var mytext = Intent.GetStringExtra("MyData");
+            //replace text gotten from intent, sent by mainactivity
+            textview1.Text = mytext;
+
+
         }
     }
 }
