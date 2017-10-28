@@ -1,0 +1,8 @@
+Excrcises.MainActivity, Excrcises;md55173b38de598d386d03512df377e6da2.MainActivity
+Excrcises.MainActivity, Excrcises, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md55173b38de598d386d03512df377e6da2.MainActivity
+Excrcises.MainActivity;md55173b38de598d386d03512df377e6da2.MainActivity
+excrcises.MainActivity;md55173b38de598d386d03512df377e6da2.MainActivity
+Excrcises.second_activity, Excrcises;md55173b38de598d386d03512df377e6da2.second_activity
+Excrcises.second_activity, Excrcises, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md55173b38de598d386d03512df377e6da2.second_activity
+Excrcises.second_activity;md55173b38de598d386d03512df377e6da2.second_activity
+excrcises.second_activity;md55173b38de598d386d03512df377e6da2.second_activity
