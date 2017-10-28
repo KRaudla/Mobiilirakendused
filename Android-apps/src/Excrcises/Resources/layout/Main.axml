@@ -35,4 +35,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/txtview1"
         android:textColor="#000000" />
+    <Button
+        android:text="Ava www.ee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnWebview" />
+    <Button
+        android:text="Näita listi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnShowListview" />
 </LinearLayout>
