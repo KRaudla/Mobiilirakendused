@@ -14,3 +14,7 @@ Excrcises.web_activity, Excrcises;md55173b38de598d386d03512df377e6da2.web_activi
 Excrcises.web_activity, Excrcises, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md55173b38de598d386d03512df377e6da2.web_activity
 Excrcises.web_activity;md55173b38de598d386d03512df377e6da2.web_activity
 excrcises.web_activity;md55173b38de598d386d03512df377e6da2.web_activity
+Exercises.CustomAdapter, Excrcises;md5e4fe750216eaf87a205f871b75e87490.CustomAdapter
+Exercises.CustomAdapter, Excrcises, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e4fe750216eaf87a205f871b75e87490.CustomAdapter
+Exercises.CustomAdapter;md5e4fe750216eaf87a205f871b75e87490.CustomAdapter
+exercises.CustomAdapter;md5e4fe750216eaf87a205f871b75e87490.CustomAdapter

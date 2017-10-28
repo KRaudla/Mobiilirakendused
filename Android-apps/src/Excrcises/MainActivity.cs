@@ -13,8 +13,13 @@ namespace Excrcises
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Main);//show main view
 
-            //direct to second view
+            //find all buttons and other
             var secondview = FindViewById<Button>(Resource.Id.btnSecondView);//define button 
+            var btnChange = FindViewById<Button>(Resource.Id.btnChangeText);
+            var txtchange = FindViewById<TextView>(Resource.Id.txtview1);
+            var btnwebview = FindViewById<Button>(Resource.Id.btnWebview);
+            var btnlistview = FindViewById<Button>(Resource.Id.btnShowListview);
+
             secondview.Click += delegate
             {
                 var secondActivity = new Intent(this, typeof(second_activity));
@@ -22,22 +27,18 @@ namespace Excrcises
                 StartActivity(secondActivity);
             };
 
-            var btnChange = FindViewById<Button>(Resource.Id.btnChangeText);
-            var txtchange = FindViewById<TextView>(Resource.Id.txtview1);
             btnChange.Click += delegate
             {
                 txtchange.Text = "Tekst muutus";
             };
 
-            //direct to web view
-            var btnwebview = FindViewById<Button>(Resource.Id.btnWebview);
+            //direct to web
             btnwebview.Click += delegate
             {
                 var webActivity = new Intent(this, typeof(web_activity));
                 StartActivity(webActivity);
             };
-            //direct to listview
-            var btnlistview = FindViewById<Button>(Resource.Id.btnShowListview);
+            //direct to listview 
             btnlistview.Click += delegate
             {
                 var listview = new Intent(this, typeof(listview_activity));
