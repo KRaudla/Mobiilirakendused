@@ -18,3 +18,4 @@ C:\Users\admin\Documents\GitHub\Mobiilirakendused\Android-apps\src\Excrcises\bin
 C:\Users\admin\Documents\GitHub\Mobiilirakendused\Android-apps\src\Excrcises\obj\Debug\android\assets\Excrcises.dll.mdb
 C:\Users\admin\Documents\GitHub\Mobiilirakendused\Android-apps\src\Excrcises\obj\Debug\Excrcises.csprojResolveAssemblyReference.cache
 C:\Users\admin\Documents\GitHub\Mobiilirakendused\Android-apps\src\Excrcises\obj\Debug\res\layout\customview.xml
+C:\Users\admin\Documents\GitHub\Mobiilirakendused\Android-apps\src\Excrcises\obj\Debug\res\drawable\car.png

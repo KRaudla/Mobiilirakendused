@@ -11,21 +11,23 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int tasker=0x7f020000;
+        public static final int car=0x7f020000;
+        public static final int tasker=0x7f020001;
     }
     public static final class id {
-        public static final int btnChangeText=0x7f050005;
-        public static final int btnSecondView=0x7f050006;
-        public static final int btnShowListview=0x7f050009;
-        public static final int btnWebview=0x7f050008;
-        public static final int imageView1=0x7f05000a;
-        public static final int linearLayout1=0x7f050000;
-        public static final int listview1=0x7f050004;
-        public static final int txtKw=0x7f050002;
-        public static final int txtModel=0x7f050003;
-        public static final int txtName=0x7f050001;
-        public static final int txtview1=0x7f050007;
-        public static final int webView1=0x7f05000b;
+        public static final int btnChangeText=0x7f050007;
+        public static final int btnSecondView=0x7f050008;
+        public static final int btnShowListview=0x7f05000b;
+        public static final int btnWebview=0x7f05000a;
+        public static final int imageView1=0x7f050000;
+        public static final int linearLayout1=0x7f050002;
+        public static final int linearLayout2=0x7f050001;
+        public static final int listview1=0x7f050006;
+        public static final int txtKw=0x7f050005;
+        public static final int txtModel=0x7f050004;
+        public static final int txtName=0x7f050003;
+        public static final int txtview1=0x7f050009;
+        public static final int webView1=0x7f05000c;
     }
     public static final class layout {
         public static final int customview=0x7f030000;

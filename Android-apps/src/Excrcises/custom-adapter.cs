@@ -48,6 +48,7 @@ namespace Exercises
             view.FindViewById<TextView>(Resource.Id.txtName).Text = items[position].Name;
             view.FindViewById<TextView>(Resource.Id.txtKw).Text = items[position].Kw.ToString();
             view.FindViewById<TextView>(Resource.Id.txtModel).Text = items[position].Model.ToString();
+            view.FindViewById<ImageView>(Resource.Id.imageView1).SetImageResource(items[position].ImageId);
             return view;
         }
     }
