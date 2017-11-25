@@ -14,9 +14,6 @@ public final class R {
         public static final int tasker=0x7f020000;
     }
     public static final class id {
-        public static final int Text1=0x7f050001;
-        public static final int Text2=0x7f050002;
-        public static final int Text3=0x7f050003;
         public static final int btnChangeText=0x7f050005;
         public static final int btnSecondView=0x7f050006;
         public static final int btnShowListview=0x7f050009;
@@ -24,6 +21,9 @@ public final class R {
         public static final int imageView1=0x7f05000a;
         public static final int linearLayout1=0x7f050000;
         public static final int listview1=0x7f050004;
+        public static final int txtKw=0x7f050002;
+        public static final int txtModel=0x7f050003;
+        public static final int txtName=0x7f050001;
         public static final int txtview1=0x7f050007;
         public static final int webView1=0x7f05000b;
     }

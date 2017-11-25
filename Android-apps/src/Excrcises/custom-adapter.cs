@@ -45,9 +45,9 @@ namespace Exercises
             View view = convertView;
             if (view == null)
                 view = context.LayoutInflater.Inflate(Resource.Layout.Customview, null);
-            view.FindViewById<TextView>(Resource.Id.Text1).Text = items[position].Name;
-            view.FindViewById<TextView>(Resource.Id.Text2).Text = items[position].Kw.ToString();
-            view.FindViewById<TextView>(Resource.Id.Text3).Text = items[position].Model.ToString();
+            view.FindViewById<TextView>(Resource.Id.txtName).Text = items[position].Name;
+            view.FindViewById<TextView>(Resource.Id.txtKw).Text = items[position].Kw.ToString();
+            view.FindViewById<TextView>(Resource.Id.txtModel).Text = items[position].Model.ToString();
             return view;
         }
     }
