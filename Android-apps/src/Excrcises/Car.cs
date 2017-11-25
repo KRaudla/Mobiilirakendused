@@ -16,5 +16,6 @@ namespace Exercises
     {
         public string Name { get; set; }
         public int Kw { get; set; }
+        public string Model { get; set; }
     }
 }
