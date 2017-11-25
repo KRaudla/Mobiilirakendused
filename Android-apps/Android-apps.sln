@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excrcises", "src\Excrcises\Excrcises.csproj", "{0D00D47E-B2AC-4D80-BA50-93B893C8A1A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook-view", "Facebook-view\Facebook-view.csproj", "{DEAC3AC0-C778-422E-AB57-4F9238B356E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,12 @@ Global
 		{0D00D47E-B2AC-4D80-BA50-93B893C8A1A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D00D47E-B2AC-4D80-BA50-93B893C8A1A2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0D00D47E-B2AC-4D80-BA50-93B893C8A1A2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DEAC3AC0-C778-422E-AB57-4F9238B356E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEAC3AC0-C778-422E-AB57-4F9238B356E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEAC3AC0-C778-422E-AB57-4F9238B356E6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DEAC3AC0-C778-422E-AB57-4F9238B356E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEAC3AC0-C778-422E-AB57-4F9238B356E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEAC3AC0-C778-422E-AB57-4F9238B356E6}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
