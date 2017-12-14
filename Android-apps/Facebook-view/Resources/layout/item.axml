@@ -17,7 +17,7 @@
             android:src="@drawable/unnamed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView1" />
+            android:id="@+id/profileImage" />
         <LinearLayout
             android:orientation="vertical"
             android:minWidth="25px"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/linearLayoutProfileText">
             <TextView
-                android:id="@+id/txtName"
+                android:id="@+id/txtFullName"
                 android:text="Kaspar Raudla"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
         android:id="@+id/linearLayoutStatus">
         <TextView
             android:id="@+id/txtStatus"
-            android:text="Hello, this is my Status textHello, this is my Status textHello, this is my Status textHello, this is my Status textHello, this is my Status textHello, this is my Status text"
+            android:text="Hello, this is..."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
@@ -73,7 +73,7 @@
             android:src="@drawable/mycar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView1" />
+            android:id="@+id/postImage" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"

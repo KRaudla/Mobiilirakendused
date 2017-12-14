@@ -13,14 +13,14 @@ using SQLite;
 
 namespace Facebook_view
 {
-    public class User
+    public class Post
     {
         [PrimaryKey,AutoIncrement]
         public int Id{ get; set; }
         public string Name { get; set; }
-                 
-        
-
-
+        public string Timestamp { get; set; }
+        public string Status { get; set; }
+        public int PostImageId { get; set; }
+        public int ProfileImageId { get; set; }
     }
 }

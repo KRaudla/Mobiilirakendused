@@ -2,6 +2,7 @@
 using Android.Widget;
 using Android.OS;
 using Android.Content;
+using System.Collections.Generic;
 
 namespace Facebook_view
 {
@@ -12,18 +13,62 @@ namespace Facebook_view
         {
             base.OnCreate(savedInstanceState);
            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
+            SetContentView(Resource.Layout.feed);
+            var feed = FindViewById<ListView>(Resource.Id.listviewFeed);//define list object
+            var posts = GeneratePosts();//generate list of cars
 
-            var databaseview = FindViewById<Button>(Resource.Id.btnDatabase);
+            feed.Adapter = new CustomAdapter(this, posts);
 
-            databaseview.Click += delegate
-            {
-                var databaseActivity = new Intent(this, typeof(DatabaseActivity));
-                //databaseActivity.PutExtra("MyData", "Hello World");//define data
-                StartActivity(databaseActivity);
-            };
+            //tap listener to listview
+            //feed.ItemClick += ListView_ItemClick;
+        }
+        /*
+        private void ListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            Android.Widget.Toast.MakeText(this, "Vajutasid", Android.Widget.ToastLength.Short).Show();
+        }
+        */
+        private List<Post> GeneratePosts()
+        {
+            var posts = new List<Post>();
+            var post1 = new Post();
+            post1.Id = 1;
+            post1.Name = "Kaspar Raudla";
+            post1.Timestamp = "10.12.2017";
+            post1.Status = "Tere, see on minu postituse staatus";
+            post1.PostImageId = Resource.Drawable.mycar;
+            post1.ProfileImageId = Resource.Drawable.unnamed;
+            posts.Add(post1);
 
-            //var button = FindViewById<ImageButton>(Resource.Id.txtName);
+            var post2 = new Post();
+            post2.Id = 1;
+            post2.Name = "Kaspar Raudla";
+            post2.Timestamp = "10.12.2017";
+            post2.Status = "Tere, see on minu postituse staatus";
+            post2.PostImageId = Resource.Drawable.mycar;
+            post2.ProfileImageId = Resource.Drawable.unnamed;
+            posts.Add(post2);
+
+            var post3 = new Post();
+            post3.Id = 1;
+            post3.Name = "Kaspar Raudla";
+            post3.Timestamp = "10.12.2017";
+            post3.Status = "Tere, see on minu postituse staatus";
+            post3.PostImageId = Resource.Drawable.mycar;
+            post3.ProfileImageId = Resource.Drawable.unnamed;
+            posts.Add(post3);
+
+            var post4 = new Post();
+            post4.Id = 1;
+            post4.Name = "Kaspar Raudla";
+            post4.Timestamp = "10.12.2017";
+            post4.Status = "Tere, see on minu postituse staatus";
+            post4.PostImageId = Resource.Drawable.mycar;
+            post4.ProfileImageId = Resource.Drawable.unnamed;
+            posts.Add(post4);
+
+
+            return posts;
         }
     }
 }
