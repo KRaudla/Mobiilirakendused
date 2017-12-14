@@ -13,21 +13,28 @@ namespace Facebook_view
         {
             base.OnCreate(savedInstanceState);
            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.feed);
-            var feed = FindViewById<ListView>(Resource.Id.listviewFeed);//define list object
+            //SetContentView(Resource.Layout.feed);
+            SetContentView(Resource.Layout.NewPostLayout);
+/*            var feed = FindViewById<ListView>(Resource.Id.listviewFeed);//define list object
             var posts = GeneratePosts();//generate list of cars
-
             feed.Adapter = new CustomAdapter(this, posts);
 
-            //tap listener to listview
-            //feed.ItemClick += ListView_ItemClick;
+            //test want to open new post view, when item clicked.....
+            
+            feed.ItemClick += Feed_ItemClick;
+            */
         }
         /*
-        private void ListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+
+
+        private void Feed_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
+
+            var postActivity = new Intent(this, typeof(PostActivity));
+            StartActivity(postActivity);
             Android.Widget.Toast.MakeText(this, "Vajutasid", Android.Widget.ToastLength.Short).Show();
         }
-        */
+
         private List<Post> GeneratePosts()
         {
             var posts = new List<Post>();
@@ -70,6 +77,8 @@ namespace Facebook_view
 
             return posts;
         }
+        */
     }
+
 }
 

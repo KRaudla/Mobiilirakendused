@@ -13,53 +13,68 @@ using SQLite;
 
 namespace Facebook_view
 {
-    [Activity(Label = "DatabaseActivity")]
-    public class DatabaseActivity : Activity
+    [Activity(Label = "PostActivity")]
+    public class PostActivity : Activity
     { 
-        private EditText txtFirstName;
-        private TextView txtOutput; 
+        private EditText txtFullName;
         string path;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.DatabaseLayout);
+            SetContentView(Resource.Layout.NewPostLayout);
 
             //find buttons and text fields from layout
-            txtFirstName = FindViewById<EditText>(Resource.Id.txtName);
+            txtFullName = FindViewById<EditText>(Resource.Id.txtName);
             var btnAddName = FindViewById<Button>(Resource.Id.btnAdd);
-            txtOutput = FindViewById<TextView>(Resource.Id.txtResult);
+           
             
             //create document folder - database
             var docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
             path = System.IO.Path.Combine(docsFolder, "db_sqlite.db");
 
-            //create new table
-            //createDatabase(path);
+            
             
             //listen button and do something
             btnAddName.Click += BtnAddName_Click;
-            /*
+
+            //test.....buttons to create database and show info
+            var btnCreateDatabase = FindViewById<Button>(Resource.Id.btnCreateDatabase);
+            var btnDatabaseInfo = FindViewById<Button>(Resource.Id.btnShowDatainfo);
+            btnCreateDatabase.Click += BtnCreateDatabase_Click;
+            btnDatabaseInfo.Click += BtnDatabaseInfo_Click;
+            
+
+
+        }
+
+        private void BtnDatabaseInfo_Click(object sender, EventArgs e)
+        {
+            
             //read from database
             var connection = new SQLiteConnection(path);
-            List<User> userlist = new List<User>();
-            var users = connection.Table<User>();//.Where(x => x.Id == 1);
+            List<Post> posts = new List<Post>();
+            var users = connection.Table<Post>();//.Where(x => x.Id == 1);
             foreach (var user in users)
             {
-                userlist.Add(user);
-            }*/
-            
-            
+                posts.Add(user);
+            }
+        }
+
+        private void BtnCreateDatabase_Click(object sender, EventArgs e)
+        {
+            //create new table
+            createDatabase(path);
         }
 
         private void BtnAddName_Click(object sender, EventArgs e)
         {
-            if (txtFirstName.Text != "")
+            if (txtFullName.Text != "")
             {
                 //user data
                 var user = new Post();
-                user.Name = txtFirstName.Text;
+                user.Name = txtFullName.Text;
                 insertUpdateData(user, path);
                 Android.Widget.Toast.MakeText(this, "Andmed lisatud", Android.Widget.ToastLength.Short).Show();
             }

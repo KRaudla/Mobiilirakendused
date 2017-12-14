@@ -55,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="customAdapter.cs" />
-    <Compile Include="DatabaseActivity.cs" />
+    <Compile Include="PostActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,7 +72,7 @@
     <AndroidResource Include="Resources\layout\item.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\DatabaseLayout.axml">
+    <AndroidResource Include="Resources\layout\NewPostLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\feed.axml">
