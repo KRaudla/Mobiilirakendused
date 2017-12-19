@@ -43,7 +43,7 @@ namespace Facebook_view
         {
             View view = convertView;
             if (view == null)
-                view = context.LayoutInflater.Inflate(Resource.Layout.item, null);
+                view = context.LayoutInflater.Inflate(Resource.Layout.feedItem, null);
             view.FindViewById<TextView>(Resource.Id.txtFullName).Text = items[position].Name;
             view.FindViewById<TextView>(Resource.Id.txtTimestamp).Text = items[position].Timestamp.ToString();
             view.FindViewById<TextView>(Resource.Id.txtStatus).Text = items[position].Status.ToString();
