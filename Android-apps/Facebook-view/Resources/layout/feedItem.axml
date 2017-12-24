@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayoutProfileInfo">
         <ImageView
-            android:src="@drawable/unnamed"
+            android:src="@drawable/profilePicture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/profileImage" />
@@ -22,9 +22,10 @@
             android:orientation="vertical"
             android:minWidth="25px"
             android:minHeight="25px"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/linearLayoutProfileText">
+            android:id="@+id/linearLayoutProfileText"
+            android:layout_marginRight="0.0dp">
             <TextView
                 android:id="@+id/txtFullName"
                 android:text="Kaspar Raudla"
@@ -32,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
                 android:textSize="20dip"
-                android:textStyle="italic"
+                android:textStyle="bold"
                 android:layout_marginLeft="8dp" />
             <TextView
                 android:id="@+id/txtTimestamp"
@@ -40,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="20dip"
+                android:textSize="14dip"
                 android:textStyle="italic"
                 android:layout_marginLeft="8dp" />
         </LinearLayout>
@@ -70,7 +71,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayoutStatusPicture">
         <ImageView
-            android:src="@drawable/mycar"
+            android:src="@drawable/postPicture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/postImage" />
@@ -81,19 +82,17 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayoutButtons">
+        android:id="@+id/linearLayoutChange"
+        android:layout_marginRight="0.0dp">
         <Button
-            android:text="Button"
-            android:layout_width="wrap_content"
+            android:text="Delete"
             android:layout_height="wrap_content"
-            android:id="@+id/button1"
-            android:layout_weight="1" />
+            android:id="@+id/buttonDelete"
+            android:layout_width="wrap_content" />
         <Button
-            android:text="Button"
-            android:layout_width="wrap_content"
+            android:text="Edit"
             android:layout_height="wrap_content"
-            android:id="@+id/button2"
-            android:layout_weight="1" />
+            android:id="@+id/buttonEdit"
+            android:layout_width="wrap_content" />
     </LinearLayout>
-    
 </LinearLayout>
