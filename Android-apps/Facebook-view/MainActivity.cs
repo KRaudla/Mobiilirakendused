@@ -23,23 +23,23 @@ namespace Facebook_view
             //var conn = new SQLiteConnection(path);
             //conn.Execute("DELETE FROM Post");
             createDatabase(path);
-
-            var post = new Post();
-            post.Name = "Jimmy";
-            post.Timestamp = "24.12.2017";
-            post.Status = "Minus staatus";
-            post.ProfileImageId = Resource.Drawable.profilePicture;
-            post.PostImageId = Resource.Drawable.postPicture;
-            insertUpdateData(post, path);
-
-
             var allPosts = findAllPosts(path);
             feed.Adapter = new CustomAdapter(this, allPosts);
+            feed.ItemClick += Feed_ItemClick;
+
 
         }
 
-        //https://stackoverflow.com/questions/36213948/what-is-the-difference-between-asynchronous-calls-and-callbacks
+        private void Feed_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var ItemActivity = new Intent(this, typeof(Item_activity));
+            ItemActivity.PutExtra("FullName", e.View.FindViewById<TextView>(Resource.Id.txtFullName).Text);
+            ItemActivity.PutExtra("TimeStamp", e.View.FindViewById<TextView>(Resource.Id.txtTimestamp).Text);
+            ItemActivity.PutExtra("StatusMsg", e.View.FindViewById<TextView>(Resource.Id.txtStatus).Text);
+            ItemActivity.PutExtra("ItemId", e.Id);
 
+            StartActivity(ItemActivity);
+        }
 
         private string createDatabase(string path)
         {

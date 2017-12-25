@@ -88,11 +88,13 @@
             android:text="Delete"
             android:layout_height="wrap_content"
             android:id="@+id/buttonDelete"
-            android:layout_width="wrap_content" />
+            android:layout_width="wrap_content"
+            android:layout_weight="1"/>
         <Button
             android:text="Edit"
             android:layout_height="wrap_content"
             android:id="@+id/buttonEdit"
-            android:layout_width="wrap_content" />
+            android:layout_width="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
 </LinearLayout>

@@ -44,11 +44,14 @@ namespace Facebook_view
             View view = convertView;
             if (view == null)
                 view = context.LayoutInflater.Inflate(Resource.Layout.feedItem, null);
-            view.FindViewById<TextView>(Resource.Id.txtFullName).Text = items[position].Name;
-            view.FindViewById<TextView>(Resource.Id.txtTimestamp).Text = items[position].Timestamp.ToString();
-            view.FindViewById<TextView>(Resource.Id.txtStatus).Text = items[position].Status.ToString();
-            view.FindViewById<ImageView>(Resource.Id.postImage).SetImageResource(items[position].PostImageId);
-            view.FindViewById<ImageView>(Resource.Id.profileImage).SetImageResource(items[position].ProfileImageId);
+                view.FindViewById<TextView>(Resource.Id.txtFullName).Text = items[position].Name;
+                view.FindViewById<TextView>(Resource.Id.txtTimestamp).Text = items[position].Timestamp.ToString();
+                view.FindViewById<TextView>(Resource.Id.txtStatus).Text = items[position].Status.ToString();
+                view.FindViewById<ImageView>(Resource.Id.postImage).SetImageResource(items[position].PostImageId);
+                view.FindViewById<ImageView>(Resource.Id.profileImage).SetImageResource(items[position].ProfileImageId);
+            //dont show buttons in feed
+                view.FindViewById<Button>(Resource.Id.buttonDelete).Visibility = ViewStates.Gone;
+                view.FindViewById<Button>(Resource.Id.buttonEdit).Visibility = ViewStates.Gone;
             return view;
         }
     }
