@@ -41,5 +41,7 @@ namespace Facebook_view
         {
             Toast.MakeText(this, "Data Removed Sucessfully", ToastLength.Short).Show();
         }
+
+        
     }
 }

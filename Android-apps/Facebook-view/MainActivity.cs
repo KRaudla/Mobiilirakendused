@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Content;
 using System.Collections.Generic;
 using SQLite;
+using Android.Views;
 
 namespace Facebook_view
 {
@@ -13,7 +14,12 @@ namespace Facebook_view
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.feed);
+            SetContentView(Resource.Layout.Main);
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetActionBar(toolbar);
+            ActionBar.Title = "Postitused";
+
+        
             var feed = FindViewById<ListView>(Resource.Id.listviewFeed);//define list object
 
             //create document folder - database
@@ -23,6 +29,11 @@ namespace Facebook_view
             //var conn = new SQLiteConnection(path);
             //conn.Execute("DELETE FROM Post");
             createDatabase(path);
+
+            //var post = generateTestPost();
+            //insertUpdateData(post, path);
+            
+
             var allPosts = findAllPosts(path);
             feed.Adapter = new CustomAdapter(this, allPosts);
             feed.ItemClick += Feed_ItemClick;
@@ -84,6 +95,29 @@ namespace Facebook_view
                 return ex.Message;
             }
         }
+        private Post generateTestPost()
+        {
+            var post = new Post();
+            post.Name = "Madis Kõpper";
+            post.Timestamp = "24.12.2017";
+            post.Status = "Käisin sital";
+            //post.ProfileImageId = Resource.Drawable.profilePicture;
+            //post.PostImageId = Resource.Drawable.postPicture;
+            return post;
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.top_menus, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            Toast.MakeText(this, "Action selected: " + item.TitleFormatted,
+                ToastLength.Short).Show();
+            return base.OnOptionsItemSelected(item);
+        }
+
     }
 
 }
