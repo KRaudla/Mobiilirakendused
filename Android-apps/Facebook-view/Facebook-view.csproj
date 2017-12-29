@@ -72,9 +72,6 @@
     <AndroidResource Include="Resources\layout\NewPostLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\feed.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\feedItem.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
