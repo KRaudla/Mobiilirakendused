@@ -17,10 +17,9 @@ namespace Facebook_view
             SetContentView(Resource.Layout.Main);
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
-            ActionBar.Title = "Postitused";
-
-        
+            ActionBar.Title = "Postitused";     
             var feed = FindViewById<ListView>(Resource.Id.listviewFeed);//define list object
+
 
             //create document folder - database
             var docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
@@ -29,27 +28,12 @@ namespace Facebook_view
             //var conn = new SQLiteConnection(path);
             //conn.Execute("DELETE FROM Post");
             createDatabase(path);
-
-            //var post = generateTestPost();
-            //insertUpdateData(post, path);
-            
-
+            var post = generateTestPost();
+            insertUpdateData(post, path);
             var allPosts = findAllPosts(path);
             feed.Adapter = new CustomAdapter(this, allPosts);
-            feed.ItemClick += Feed_ItemClick;
 
-
-        }
-
-        private void Feed_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
-        {
-            var ItemActivity = new Intent(this, typeof(Item_activity));
-            ItemActivity.PutExtra("FullName", e.View.FindViewById<TextView>(Resource.Id.txtFullName).Text);
-            ItemActivity.PutExtra("TimeStamp", e.View.FindViewById<TextView>(Resource.Id.txtTimestamp).Text);
-            ItemActivity.PutExtra("StatusMsg", e.View.FindViewById<TextView>(Resource.Id.txtStatus).Text);
-            ItemActivity.PutExtra("ItemId", e.Id);
-
-            StartActivity(ItemActivity);
+            
         }
 
         private string createDatabase(string path)
@@ -66,8 +50,7 @@ namespace Facebook_view
             }
         }
 
-        //TEST
-
+        //TEST - find posts
         private List<Post> findAllPosts(string path)
         {
             var connection = new SQLiteConnection(path);
@@ -78,9 +61,8 @@ namespace Facebook_view
             }
             return posts;
         }
-
         
-        //TEST
+        //TEST - insert post
         private string insertUpdateData(Post post, string path)
         {
             try
@@ -95,14 +77,15 @@ namespace Facebook_view
                 return ex.Message;
             }
         }
+
+        //TEST - generate random post (hardcoded)
         private Post generateTestPost()
         {
             var post = new Post();
             post.Name = "Madis Kõpper";
             post.Timestamp = "24.12.2017";
-            post.Status = "Käisin sital";
-            //post.ProfileImageId = Resource.Drawable.profilePicture;
-            //post.PostImageId = Resource.Drawable.postPicture;
+            post.Status = "ho-ho-ho";
+            post.ProfileImageId = Resource.Drawable.profilePicture;
             return post;
         }
 
