@@ -1,23 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <item
-       android:id="@+id/menu_edit"
-       android:icon="@mipmap/ic_action_content_create"
+       android:id="@+id/menu_search"
+       android:icon="@mipmap/ic_menu_search_holo_dark"
        android:showAsAction="ifRoom"
-       android:title="Edit" />
-  <item
-       android:id="@+id/menu_save"
-       android:icon="@mipmap/ic_action_content_save"
-       android:showAsAction="ifRoom"
-       android:title="Save" />
+       android:title="Otsi" />
   <item
        android:id="@+id/menu_add"
        android:showAsAction="never"
        android:title="Lisa uus" />
-  <item
-       android:id="@+id/menu_find"
-       android:showAsAction="never"
-       android:title="Otsi" />
   <item
      android:id="@+id/menu_preferences"
      android:showAsAction="never"

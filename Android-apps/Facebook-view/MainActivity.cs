@@ -17,7 +17,7 @@ namespace Facebook_view
             SetContentView(Resource.Layout.Main);
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
-            ActionBar.Title = "Postitused";     
+            ActionBar.Title = "Postitused";
             var feed = FindViewById<ListView>(Resource.Id.listviewFeed);//define list object
 
 
@@ -33,7 +33,7 @@ namespace Facebook_view
             var allPosts = findAllPosts(path);
             feed.Adapter = new CustomAdapter(this, allPosts);
 
-            
+
         }
 
         private string createDatabase(string path)
@@ -82,9 +82,9 @@ namespace Facebook_view
         private Post generateTestPost()
         {
             var post = new Post();
-            post.Name = "Madis Kõpper";
-            post.Timestamp = "24.12.2017";
-            post.Status = "ho-ho-ho";
+            post.Name = "Kaspar Raudla";
+            post.Timestamp = "29.12.2017";
+            post.Status = "Head vana aasta lõppu!";
             post.ProfileImageId = Resource.Drawable.profilePicture;
             return post;
         }

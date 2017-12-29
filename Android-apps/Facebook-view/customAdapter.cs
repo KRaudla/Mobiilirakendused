@@ -52,16 +52,9 @@ namespace Facebook_view
             //dont show buttons in feed
             view.FindViewById<Button>(Resource.Id.buttonDelete).Visibility = ViewStates.Gone;
             view.FindViewById<Button>(Resource.Id.buttonEdit).Visibility = ViewStates.Gone;
-
-            //var menuButton = view.FindViewById<ImageButton>(Resource.Id.btnItemMenu);
-            //menuButton.Click += MenuButton_Click;
-
+            
             return view;
         }
 
-        /*private void MenuButton_Click(object sender, EventArgs e)
-        {
-            Toast.MakeText(this, "Menu button clicked",ToastLength.Short).Show();
-        }*/
     }
 }
