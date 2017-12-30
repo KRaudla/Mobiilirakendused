@@ -19,6 +19,7 @@ namespace Facebook_view
     {
         List<Post> items;
         Activity context;
+        
 
         public CustomAdapter(Activity context, List<Post> items) : base()
         {
@@ -51,50 +52,50 @@ namespace Facebook_view
                 view.FindViewById<TextView>(Resource.Id.txtStatus).Text = items[position].Status.ToString();
                 view.FindViewById<ImageView>(Resource.Id.postImage).SetImageResource(items[position].PostImageId);
                 view.FindViewById<ImageView>(Resource.Id.profileImage).SetImageResource(items[position].ProfileImageId);
+                
             //dont show buttons in feed
                 view.FindViewById<Button>(Resource.Id.buttonDelete).Visibility = ViewStates.Gone;
                 view.FindViewById<Button>(Resource.Id.buttonEdit).Visibility = ViewStates.Gone;
-
+            //item button
                 var itemButton = view.FindViewById<ImageButton>(Resource.Id.btnItemMenu);
-                itemButton.Tag = position;
-                itemButton.SetOnClickListener(new ButtonClickListener(this.context));
+            //itemButton.Tag = position;
+                itemButton.Click += (sender, args) =>
+                {
+                    int itemId = (int)itemButton.Tag;
+                    PopupMenu menu = new PopupMenu(this.context, itemButton);
+                    menu.Inflate(Resource.Menu.item_menu);
+                    menu.Show();
 
+                    menu.MenuItemClick += (s1, arg1) =>
+                    {
+                        switch (arg1.Item.TitleFormatted.ToString())
+                        {
+                            case "Muuda":
+                                Android.Widget.Toast.MakeText(context, "Muudan", Android.Widget.ToastLength.Short).Show();
+                                var itemActivity = new Intent(context, typeof(Item_activity));
+
+                                //CAN BE BETTER...putextra list or array
+                                itemActivity.PutExtra("id", items[position].Id);
+                                itemActivity.PutExtra("name", items[position].Name);
+                                itemActivity.PutExtra("timeStamp", items[position].Timestamp);
+                                itemActivity.PutExtra("status", items[position].Status);
+                                itemActivity.PutExtra("profileImageId", items[position].ProfileImageId);
+                                itemActivity.PutExtra("postImageId", items[position].PostImageId);
+                                context.StartActivity(itemActivity);
+                                break;
+                            case "Kustuta":
+                                Android.Widget.Toast.MakeText(context, "Kustutan", Android.Widget.ToastLength.Short).Show();
+
+                                break;
+                        }
+                    };
+                };
             return view;
         }
 
-        private class ButtonClickListener : Java.Lang.Object, View.IOnClickListener
-        {
-            private Activity activity;
-
-            public ButtonClickListener(Activity activity)
-            {
-                this.activity = activity;
-            }
-
-            public void OnClick(View v)
-            {
-                var itemId = (int)v.Tag;
-                PopupMenu menu = new PopupMenu(this.activity, v);
-                menu.Inflate(Resource.Menu.item_menu);
-                menu.Show();
-                menu.MenuItemClick += (s1, arg1) => {
-                    switch (arg1.Item.TitleFormatted.ToString())
-                    {
-                        case "Muuda":
-                            Android.Widget.Toast.MakeText(this.activity, "Muudan", Android.Widget.ToastLength.Short).Show();
-                            var secondActivity = new Intent(this.activity, typeof(Item_activity));
-                            
-                            //secondActivity.PutExtra("MyData", "Hello World");
-                            this.activity.StartActivity(secondActivity);
-                            break;
-                        case "Kustuta":
-                            Android.Widget.Toast.MakeText(this.activity, "Kustutan", Android.Widget.ToastLength.Short).Show();
-                            
-                            break;
-                    }
-                };
+        
                 
-            }
-        }
+            
+        
     }
 }

@@ -20,9 +20,18 @@ namespace Facebook_view
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.feedItem);
 
-            FindViewById<TextView>(Resource.Id.txtFullName).Text = Intent.GetStringExtra("FullName");
-            FindViewById<TextView>(Resource.Id.txtTimestamp).Text = Intent.GetStringExtra("TimeStamp");
-            FindViewById<TextView>(Resource.Id.txtStatus).Text = Intent.GetStringExtra("StatusMsg");
+
+            string id = Intent.GetStringExtra("id") ?? "Data not available";
+            string name = Intent.GetStringExtra("name") ?? "Data not available";
+            string timeStamp = Intent.GetStringExtra("timeStamp") ?? "Data not available";
+            string status = Intent.GetStringExtra("status") ?? "Data not available";
+            string profileImageId = Intent.GetStringExtra("profileImageId") ?? "Data not available";
+            string PostImageId = Intent.GetStringExtra("PostImageId") ?? "Data not available";
+
+            FindViewById<TextView>(Resource.Id.txtFullName).Text = name;
+            FindViewById<TextView>(Resource.Id.txtTimestamp).Text = timeStamp;
+            FindViewById<TextView>(Resource.Id.txtStatus).Text = status;
+            FindViewById<ImageButton>(Resource.Id.btnItemMenu).Visibility = ViewStates.Gone;
 
             var btnDelete = FindViewById<Button>(Resource.Id.buttonDelete);
             var btnEdit = FindViewById<Button>(Resource.Id.buttonEdit);
