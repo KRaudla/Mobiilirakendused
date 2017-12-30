@@ -20,20 +20,21 @@ namespace Facebook_view
             ActionBar.Title = "Postitused";
             var feed = FindViewById<ListView>(Resource.Id.listviewFeed);//define list object
 
-
             //create document folder - database
             var docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
             var path = System.IO.Path.Combine(docsFolder, "db_sqlite.db");
+
             //DELETE TABLE
             //var conn = new SQLiteConnection(path);
             //conn.Execute("DELETE FROM Post");
+
             createDatabase(path);
-            var post = generateTestPost();
-            insertUpdateData(post, path);
+
+            //var post = generateTestPost();
+            //insertUpdateData(post, path);
+
             var allPosts = findAllPosts(path);
             feed.Adapter = new CustomAdapter(this, allPosts);
-
-
         }
 
         private string createDatabase(string path)
@@ -100,7 +101,7 @@ namespace Facebook_view
                 ToastLength.Short).Show();
             return base.OnOptionsItemSelected(item);
         }
-
+       
     }
 
 }
