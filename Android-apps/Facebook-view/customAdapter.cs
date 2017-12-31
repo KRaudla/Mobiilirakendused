@@ -55,7 +55,7 @@ namespace Facebook_view
                 
                 
         //dont show buttons in feed
-            view.FindViewById<Button>(Resource.Id.buttonEdit).Visibility = ViewStates.Gone;
+                view.FindViewById<Button>(Resource.Id.buttonEdit).Visibility = ViewStates.Gone;
         //item button
             var itemButton = view.FindViewById<ImageButton>(Resource.Id.btnItemMenu);
             

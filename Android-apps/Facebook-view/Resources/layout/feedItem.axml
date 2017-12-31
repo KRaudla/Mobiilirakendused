@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:tint="#009688"
+                android:tint="#80CBC4"
                 android:background="#E0F2F1"
                 android:id="@+id/btnItemMenu"
                 android:layout_marginRight="5dp"

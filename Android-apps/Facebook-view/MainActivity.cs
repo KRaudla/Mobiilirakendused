@@ -22,25 +22,14 @@ namespace Facebook_view
             //create database and table
             postsDB.Posts.createDatabase();
             //delete table
-            //postsDB.Posts.deleteTable("Post");
-            var post = generateTestPost();
-            postsDB.Posts.insertUpdateData(post);
+            postsDB.Posts.deleteTable("Post");
+            //insert some posts to database
+            postsDB.Posts.initPostDB();
 
             var posts = postsDB.Posts.getAllPosts();
             var feed = FindViewById<ListView>(Resource.Id.listviewFeed);
             feed.Adapter = new CustomAdapter(this, posts);
-        }
-
-        //TEST - generate random post (hardcoded)
-        private Post generateTestPost()
-        {
-            var post = new Post();
-            post.Name = "Caroly Kasemets";
-            post.Timestamp = "29.12.2017";
-            post.Status = "See on pikema tekstiga postitus";
-            post.ProfileImageId = Resource.Drawable.profilePicture;
-            //post.PostImageId = Resource.Drawable.postPicture;
-            return post;
+            
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
