@@ -53,44 +53,41 @@ namespace Facebook_view
                 view.FindViewById<ImageView>(Resource.Id.postImage).SetImageResource(items[position].PostImageId);
                 view.FindViewById<ImageView>(Resource.Id.profileImage).SetImageResource(items[position].ProfileImageId);
                 
-            //dont show buttons in feed
-                view.FindViewById<Button>(Resource.Id.buttonDelete).Visibility = ViewStates.Gone;
-                view.FindViewById<Button>(Resource.Id.buttonEdit).Visibility = ViewStates.Gone;
-            //item button
-                var itemButton = view.FindViewById<ImageButton>(Resource.Id.btnItemMenu);
-            //itemButton.Tag = position;
-                itemButton.Click += (sender, args) =>
+                
+        //dont show buttons in feed
+            view.FindViewById<Button>(Resource.Id.buttonEdit).Visibility = ViewStates.Gone;
+        //item button
+            var itemButton = view.FindViewById<ImageButton>(Resource.Id.btnItemMenu);
+            
+            itemButton.Tag = items[position].Id;
+
+            itemButton.Click += (sender, args) =>
+            {
+                //int itemId = (int)itemButton.Tag;
+                PopupMenu menu = new PopupMenu(this.context, itemButton);
+                menu.Inflate(Resource.Menu.item_menu);
+                menu.Show();
+
+                menu.MenuItemClick += (s1, arg1) =>
                 {
-                    int itemId = (int)itemButton.Tag;
-                    PopupMenu menu = new PopupMenu(this.context, itemButton);
-                    menu.Inflate(Resource.Menu.item_menu);
-                    menu.Show();
-
-                    menu.MenuItemClick += (s1, arg1) =>
+                    switch (arg1.Item.TitleFormatted.ToString())
                     {
-                        switch (arg1.Item.TitleFormatted.ToString())
-                        {
-                            case "Muuda":
-                                Android.Widget.Toast.MakeText(context, "Muudan", Android.Widget.ToastLength.Short).Show();
-                                var itemActivity = new Intent(context, typeof(Item_activity));
-
-                                //CAN BE BETTER...putextra list or array
-                                itemActivity.PutExtra("id", items[position].Id);
-                                itemActivity.PutExtra("name", items[position].Name);
-                                itemActivity.PutExtra("timeStamp", items[position].Timestamp);
-                                itemActivity.PutExtra("status", items[position].Status);
-                                itemActivity.PutExtra("profileImageId", items[position].ProfileImageId);
-                                itemActivity.PutExtra("postImageId", items[position].PostImageId);
-                                context.StartActivity(itemActivity);
-                                break;
-                            case "Kustuta":
-                                Android.Widget.Toast.MakeText(context, "Kustutan", Android.Widget.ToastLength.Short).Show();
-
-                                break;
-                        }
-                    };
+                        case "Muuda":
+                            Android.Widget.Toast.MakeText(context, "Muudan", Android.Widget.ToastLength.Short).Show();
+                            var itemActivity = new Intent(context, typeof(Item_activity));
+                            Bundle bundleMe = new Bundle();
+                            bundleMe.PutInt("id",(int)itemButton.Tag);
+                            //pass item id to next activity
+                            itemActivity.PutExtras(bundleMe);
+                            context.StartActivity(itemActivity);
+                            break;
+                        case "Kustuta":
+                            Android.Widget.Toast.MakeText(context, "Kustutan", Android.Widget.ToastLength.Short).Show();
+                            break;
+                    }
                 };
-            return view;
+            };
+        return view;
         }
 
         

@@ -13,6 +13,7 @@ using SQLite;
 
 namespace Facebook_view
 {
+    [Table("Post")]
     public class Post
     {
         [PrimaryKey,AutoIncrement]
@@ -23,9 +24,9 @@ namespace Facebook_view
         public int PostImageId { get; set; }
         public int ProfileImageId { get; set; }
 
-        public override string ToString()
+        /*public override string ToString()
         {
             return string.Format($"[Post: ID={0}, Name={1}, TimeStamp={2}]", Id, Name, Timestamp);
-        }
+        }*/
     }
 }

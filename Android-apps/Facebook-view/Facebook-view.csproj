@@ -57,6 +57,7 @@
     <Compile Include="customAdapter.cs" />
     <Compile Include="ItemActivity.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="postsDB.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLite.cs" />

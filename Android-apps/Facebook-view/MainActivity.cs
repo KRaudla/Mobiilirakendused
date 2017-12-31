@@ -18,75 +18,28 @@ namespace Facebook_view
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
             ActionBar.Title = "Postitused";
-            var feed = FindViewById<ListView>(Resource.Id.listviewFeed);//define list object
 
-            //create document folder - database
-            var docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-            var path = System.IO.Path.Combine(docsFolder, "db_sqlite.db");
+            //create database and table
+            postsDB.Posts.createDatabase();
+            //delete table
+            //postsDB.Posts.deleteTable("Post");
+            var post = generateTestPost();
+            postsDB.Posts.insertUpdateData(post);
 
-            //DELETE TABLE
-            //var conn = new SQLiteConnection(path);
-            //conn.Execute("DELETE FROM Post");
-
-            createDatabase(path);
-
-            //var post = generateTestPost();
-            //insertUpdateData(post, path);
-
-            var allPosts = findAllPosts(path);
-            feed.Adapter = new CustomAdapter(this, allPosts);
-        }
-
-        private string createDatabase(string path)
-        {
-            try
-            {
-                var connection = new SQLiteConnection(path);
-                connection.CreateTable<Post>();
-                return "Database for posts created";
-            }
-            catch (SQLiteException ex)
-            {
-                return ex.Message;
-            }
-        }
-
-        //TEST - find posts
-        private List<Post> findAllPosts(string path)
-        {
-            var connection = new SQLiteConnection(path);
-            var posts = new List<Post>();
-            foreach (var post in connection.Table<Post>())
-            {
-                posts.Add(post);
-            }
-            return posts;
-        }
-        
-        //TEST - insert post
-        private string insertUpdateData(Post post, string path)
-        {
-            try
-            {
-                var db = new SQLiteConnection(path);
-                if (db.Insert(post) != 0)
-                    db.Update(post);
-                return "Single data file inserted or updated";
-            }
-            catch (SQLiteException ex)
-            {
-                return ex.Message;
-            }
+            var posts = postsDB.Posts.getAllPosts();
+            var feed = FindViewById<ListView>(Resource.Id.listviewFeed);
+            feed.Adapter = new CustomAdapter(this, posts);
         }
 
         //TEST - generate random post (hardcoded)
         private Post generateTestPost()
         {
             var post = new Post();
-            post.Name = "Kaspar Raudla";
+            post.Name = "Caroly Kasemets";
             post.Timestamp = "29.12.2017";
-            post.Status = "Head vana aasta lõppu!";
+            post.Status = "See on pikema tekstiga postitus";
             post.ProfileImageId = Resource.Drawable.profilePicture;
+            //post.PostImageId = Resource.Drawable.postPicture;
             return post;
         }
 
@@ -100,9 +53,7 @@ namespace Facebook_view
             Toast.MakeText(this, "Action selected: " + item.TitleFormatted,
                 ToastLength.Short).Show();
             return base.OnOptionsItemSelected(item);
-        }
-       
+        }  
     }
-
 }
 
