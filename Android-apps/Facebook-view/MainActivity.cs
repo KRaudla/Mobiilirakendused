@@ -22,7 +22,7 @@ namespace Facebook_view
             //create database and table
             postsDB.Posts.createDatabase();
             //delete table
-            postsDB.Posts.deleteTable("Post");
+            postsDB.Posts.clearAllPosts();
             //insert some posts to database
             postsDB.Posts.initPostDB();
 

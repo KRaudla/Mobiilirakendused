@@ -73,7 +73,6 @@ namespace Facebook_view
                     switch (arg1.Item.TitleFormatted.ToString())
                     {
                         case "Muuda":
-                            Android.Widget.Toast.MakeText(context, "Muudan", Android.Widget.ToastLength.Short).Show();
                             var itemActivity = new Intent(context, typeof(Item_activity));
                             Bundle bundleMe = new Bundle();
                             bundleMe.PutInt("id",(int)itemButton.Tag);
@@ -82,17 +81,17 @@ namespace Facebook_view
                             context.StartActivity(itemActivity);
                             break;
                         case "Kustuta":
-                            Android.Widget.Toast.MakeText(context, "Kustutan", Android.Widget.ToastLength.Short).Show();
+                            
+                            postsDB.Posts.deletePostById((int)itemButton.Tag);//delete post from database
+                            this.items.RemoveAt(position);//delete item from adapter list
+                            context.RunOnUiThread(() => this.NotifyDataSetChanged());//update adapter and listview
+                            Android.Widget.Toast.MakeText(context, "Postitus kustutatud", Android.Widget.ToastLength.Short).Show();
                             break;
                     }
                 };
             };
         return view;
         }
-
-        
-                
-            
         
     }
 }

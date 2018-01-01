@@ -82,22 +82,19 @@ namespace Facebook_view
             }
         }
         //delete table
-        public string deleteTable(string tableName)
+        public void clearAllPosts()
         {
-            try
-            {
-                dbConnection.Execute($"DELETE FROM {tableName}");
-                return "Table deleted";
-            }
-            catch (SQLiteException ex)
-            {
-                return ex.Message;
-            }
+            dbConnection.DeleteAll<Post>();
         }
         // get post by id
         public Post getPostById(int id)
         {
             return dbConnection.Table<Post>().FirstOrDefault(x => x.Id == id);
+        }
+        //delete post by id
+        public void deletePostById(int id)
+        {
+            dbConnection.Delete<Post>(id);
         }
         public void initPostDB()
         {
