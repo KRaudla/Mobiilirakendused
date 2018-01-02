@@ -31,7 +31,14 @@ namespace Facebook_view
             var posts = postsDB.Posts.getAllPosts();
             var feed = FindViewById<ListView>(Resource.Id.listviewFeed);
             feed.Adapter = new CustomAdapter(this, posts);
-            
+            feed.ItemClick += Feed_ItemClick;
+        }
+
+        private void Feed_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var intent = new Intent(this, typeof(designlibrarytestsActivity));
+           
+            StartActivity(intent);
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

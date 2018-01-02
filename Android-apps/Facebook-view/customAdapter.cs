@@ -58,7 +58,11 @@ namespace Facebook_view
                 view.FindViewById<Button>(Resource.Id.buttonEdit).Visibility = ViewStates.Gone;
         //item button
             var itemButton = view.FindViewById<ImageButton>(Resource.Id.btnItemMenu);
-            
+            //avoid stealing itemclick focus
+            itemButton.Focusable = false;
+            itemButton.FocusableInTouchMode = false;
+            itemButton.Clickable = true;
+
             itemButton.Tag = items[position].Id;
 
             itemButton.Click += (sender, args) =>
@@ -79,6 +83,8 @@ namespace Facebook_view
                             //pass item id to next activity
                             itemActivity.PutExtras(bundleMe);
                             context.StartActivity(itemActivity);
+                            
+                            
                             break;
                         case "Kustuta":
                             
@@ -86,6 +92,7 @@ namespace Facebook_view
                             this.items.RemoveAt(position);//delete item from adapter list
                             context.RunOnUiThread(() => this.NotifyDataSetChanged());//update adapter and listview
                             Android.Widget.Toast.MakeText(context, "Postitus kustutatud", Android.Widget.ToastLength.Short).Show();
+                            
                             break;
                     }
                 };

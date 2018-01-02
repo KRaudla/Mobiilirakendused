@@ -102,7 +102,7 @@ namespace Facebook_view
             //post.Id = 1;
             post.Name = "Caroly Kasemets";
             post.Timestamp = "29.12.2017";
-            post.Status = "See on pikema tekstiga postitus";
+            post.Status = "See on pikema tekstiga postitus abadskjsadkjsadkjsakdksad";
             post.ProfileImageId = Resource.Drawable.profilePicture;
             //post.PostImageId = Resource.Drawable.postPicture;
 
@@ -120,11 +120,38 @@ namespace Facebook_view
             post3.Timestamp = "29.12.2017";
             post3.Status = "ei oska midagi öelda";
             post3.ProfileImageId = Resource.Drawable.profilePicture;
-            //post3.PostImageId = Resource.Drawable.postPicture;
+            post3.PostImageId = Resource.Drawable.postPicture;
+
+            var post4 = new Post();
+            //post4.Id = 2;
+            post4.Name = "Kaspar Raudla";
+            post4.Timestamp = "29.12.2017";
+            post4.Status = "Postitus abc1321231";
+            post4.ProfileImageId = Resource.Drawable.profilePicture;
+            //post4.PostImageId = Resource.Drawable.postPicture;
+
+            var post5 = new Post();
+            //post5.Id = 2;
+            post5.Name = "Kaspar Raudla";
+            post5.Timestamp = "29.12.2017";
+            post5.Status = "Staatus adlfkalskdlksadewq";
+            post5.ProfileImageId = Resource.Drawable.profilePicture;
+            //post5.PostImageId = Resource.Drawable.postPicture;
+
+            var post6 = new Post();
+            //post6.Id = 2;
+            post6.Name = "Kaspar Raudla";
+            post6.Timestamp = "29.12.2017";
+            post6.Status = "Staatus dsakflkfkdfweqfr";
+            post6.ProfileImageId = Resource.Drawable.profilePicture;
+            //post6.PostImageId = Resource.Drawable.postPicture;
 
             postsDB._postsDB.insertUpdateData(post);
             postsDB._postsDB.insertUpdateData(post2);
             postsDB._postsDB.insertUpdateData(post3);
+            postsDB._postsDB.insertUpdateData(post4);
+            postsDB._postsDB.insertUpdateData(post5);
+            postsDB._postsDB.insertUpdateData(post6);
 
         }
 
