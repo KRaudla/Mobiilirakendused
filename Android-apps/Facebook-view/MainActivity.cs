@@ -14,13 +14,15 @@ namespace Facebook_view
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Main);
+            SetContentView(Resource.Layout.feed);
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
             ActionBar.Title = "Postitused";
 
             //create database and table
             postsDB.Posts.createDatabase();
+            
+            
             //delete table
             postsDB.Posts.clearAllPosts();
             //insert some posts to database

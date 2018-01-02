@@ -17,14 +17,14 @@ namespace Facebook_view
     {
         private static readonly postsDB _postsDB = new postsDB();
         SQLiteConnection dbConnection;
-        private const string _dbName = "Articles_DB.db3";
+        private const string _dbName = "db_sqlite.db";
 
-        public postsDB()
+        /*public postsDB()
         {
             var docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-            var path = System.IO.Path.Combine(docsFolder, "db_sqlite.db");
+            var path = System.IO.Path.Combine(docsFolder, _dbName);
             dbConnection = new SQLiteConnection(path);
-        }
+        }*/
         public static postsDB Posts
         {
             get
