@@ -27,7 +27,7 @@ namespace Facebook_view
             
              
             FindViewById<TextView>(Resource.Id.txtFullName).Text =item.Name;
-            FindViewById<TextView>(Resource.Id.txtTimestamp).Text = item.Timestamp;
+            FindViewById<TextView>(Resource.Id.txtTimestamp).Text = item.Timestamp.ToString();
             FindViewById<TextView>(Resource.Id.txtStatus).Text = item.Status;
             FindViewById<CircleImageView>(Resource.Id.profileImage).SetImageResource(item.ProfileImageId);
 

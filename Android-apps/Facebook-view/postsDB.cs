@@ -66,9 +66,7 @@ namespace Facebook_view
         {
             try
             {
-
-                //bug here, new post ID wont´t autoincrement!!!
-                int inserted = dbConnection.Insert(post); //will be 1 if successful
+                int inserted = dbConnection.Insert(post); //1 if successfully inserted
                 if (inserted==0)
                 {
                     dbConnection.Update(post);

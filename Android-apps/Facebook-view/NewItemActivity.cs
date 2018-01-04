@@ -41,6 +41,22 @@ namespace Facebook_view
                 var post = new Post();
                 post.Name = name.Text;
                 post.Timestamp = DateTime.Today;
+                post.Status = status.Text;
+                post.ProfileImageId = Resource.Drawable.profilePicture;
+                //TO-DO take picture from gallery or take shot. 
+                //post.PostImageId = Resource.Drawable.postPicture;
+
+                //insert new post to database
+                postsDB.Posts.insertUpdateData(post);
+                Toast toast = Toast.MakeText(this, "Your post has been added", ToastLength.Long);
+                toast.Show();
+                name.Text = "";
+                status.Text = "";
+                name.RequestFocus();
+
+                var intent = new Intent(this, typeof(MainActivity));
+                this.StartActivity(intent);
+
             }
             
 

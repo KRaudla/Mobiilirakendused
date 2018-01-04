@@ -22,9 +22,9 @@ namespace Facebook_view
             postsDB.Posts.createDatabase();
             
             //delete table
-            postsDB.Posts.clearAllPosts();
+            //postsDB.Posts.clearAllPosts();
             //insert some posts to database
-            postsDB.Posts.initPostDB();
+            //postsDB.Posts.initPostDB();
 
             var posts = postsDB.Posts.getAllPosts();
             var feed = FindViewById<ListView>(Resource.Id.listviewFeed);
