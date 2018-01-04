@@ -21,7 +21,7 @@ namespace Facebook_view
         public int Id{ get; set; }
         //public int Id { get; set; }
         public string Name { get; set; }
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
         public string Status { get; set; }
         public int PostImageId { get; set; }
         public int ProfileImageId { get; set; }

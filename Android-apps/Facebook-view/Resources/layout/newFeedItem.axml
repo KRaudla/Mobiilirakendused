@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:gravity="center"
+      android:text="Postituse sisestamine"
+      android:textSize="30sp"
+      android:textColor="#333333"
+      android:layout_gravity="top" />
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:layout_gravity="center">
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/txtInputName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+      <EditText
+          android:id="@+id/txtName"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:inputType="text"
+          android:hint="@string/hint_name" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/txtInputStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+      <EditText
+          android:id="@+id/txtStatus"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:inputType="text"
+          android:hint="@string/hint_status" />
+    </android.support.design.widget.TextInputLayout>
+    <Button
+        android:id="@+id/btnaddPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_addPost"
+        android:background="?attr/colorPrimary"
+        android:layout_marginTop="40dp"
+        android:textColor="@android:color/white"/>
+  </LinearLayout>
+</LinearLayout>

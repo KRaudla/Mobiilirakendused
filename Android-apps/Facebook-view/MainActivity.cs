@@ -5,23 +5,21 @@ using Android.Content;
 using System.Collections.Generic;
 using SQLite;
 using Android.Views;
+using Android.Support.V7.App;
+using Android.Support.Design.Widget;
 
 namespace Facebook_view
 {
-    [Activity(Label = "Facebook_view", MainLauncher = true)]
-    public class MainActivity : Activity
+    [Activity(Label = "Facebook_view", MainLauncher = true, Theme = "@style/Theme.DesignDemo")]
+    public class MainActivity : AppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.feed);
-            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            SetActionBar(toolbar);
-            ActionBar.Title = "Postitused";
 
             //create database and table
             postsDB.Posts.createDatabase();
-            
             
             //delete table
             postsDB.Posts.clearAllPosts();
@@ -31,27 +29,17 @@ namespace Facebook_view
             var posts = postsDB.Posts.getAllPosts();
             var feed = FindViewById<ListView>(Resource.Id.listviewFeed);
             feed.Adapter = new CustomAdapter(this, posts);
-            feed.ItemClick += Feed_ItemClick;
+
+            var fabButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
+
+            fabButton.Click += FabButton_Click;
         }
 
-        private void Feed_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        private void FabButton_Click(object sender, System.EventArgs e)
         {
-            var intent = new Intent(this, typeof(designlibrarytestsActivity));
-           
-            StartActivity(intent);
+            var intent = new Intent(this, typeof(NewItemActivity));
+            this.StartActivity(intent);
         }
-
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.top_menus, menu);
-            return base.OnCreateOptionsMenu(menu);
-        }
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            Toast.MakeText(this, "Action selected: " + item.TitleFormatted,
-                ToastLength.Short).Show();
-            return base.OnOptionsItemSelected(item);
-        }  
     }
 }
 
