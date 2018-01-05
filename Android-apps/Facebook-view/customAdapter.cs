@@ -54,8 +54,7 @@ namespace Facebook_view
                 view.FindViewById<ImageView>(Resource.Id.profileImage).SetImageResource(items[position].ProfileImageId);
                 
                 
-        //dont show buttons in feed
-                view.FindViewById<Button>(Resource.Id.buttonEdit).Visibility = ViewStates.Gone;
+
         //item button
             var itemButton = view.FindViewById<ImageButton>(Resource.Id.btnItemMenu);
             //avoid stealing itemclick focus
@@ -74,20 +73,18 @@ namespace Facebook_view
 
                 menu.MenuItemClick += (s1, arg1) =>
                 {
+                    
                     switch (arg1.Item.TitleFormatted.ToString())
                     {
                         case "Muuda":
-                            var itemActivity = new Intent(context, typeof(Item_activity));
+                            var editItemActivity = new Intent(context, typeof(EditItemActivity));
                             Bundle bundleMe = new Bundle();
                             bundleMe.PutInt("id",(int)itemButton.Tag);
                             //pass item id to next activity
-                            itemActivity.PutExtras(bundleMe);
-                            context.StartActivity(itemActivity);
-                            
-                            
+                            editItemActivity.PutExtras(bundleMe);
+                            context.StartActivity(editItemActivity);
                             break;
                         case "Kustuta":
-                            
                             postsDB.Posts.deletePostById((int)itemButton.Tag);//delete post from database
                             this.items.RemoveAt(position);//delete item from adapter list
                             context.RunOnUiThread(() => this.NotifyDataSetChanged());//update adapter and listview

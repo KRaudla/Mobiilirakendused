@@ -60,7 +60,11 @@ namespace Facebook_view
             }
             return posts;
         }
-
+        //insert
+        public void updateData(Post post)
+        {
+            dbConnection.Update(post);
+        }
         //insert and update post
         public string insertUpdateData(Post post)
         {

@@ -6,23 +6,15 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?android:attr/actionBarSize"
-        android:background="?android:attr/colorPrimary"
-        android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar"
-        android:popupTheme="@android:style/ThemeOverlay.Material.Light" />
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayoutProfileInfo">
+        android:id="@+id/linearLayoutProfileInfo2">
         <refractored.controls.CircleImageView
-            android:id="@+id/profileImage"
+            android:id="@+id/profileImage2"
             android:layout_width="@dimen/list_item_avatar_size"
             android:layout_height="@dimen/list_item_avatar_size"
             android:layout_marginRight="16dp"
@@ -31,23 +23,24 @@
             android:layout_marginLeft="5dp"
             app:civ_border_color="#FF000000" />
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/txtInputName"
+            android:id="@+id/txtEditName2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/txtName"
+                android:id="@+id/txtName2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:inputType="text"
                 android:hint="@string/hint_name" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/txtInputStatus"
+        android:id="@+id/txtEditStatus2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/txtStatus"
+            android:id="@+id/txtStatus2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -62,18 +55,17 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayoutStatusPicture">
+        android:id="@+id/linearLayoutStatusPicture2">
         <ImageView
-            android:id="@+id/postImage"
-            android:layout_width="fill_parent"
-            android:layout_height="300.0dp"
-            android:adjustViewBounds="true"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/postImage2" />
     </LinearLayout>
     <Button
-        android:id="@+id/btnaddPost"
+        android:id="@+id/btnEditPost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_addPost"
+        android:text="@string/btn_EditPost"
         android:background="?attr/colorPrimary"
         android:layout_marginTop="40dp"
         android:textColor="@android:color/white" />
