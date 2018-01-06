@@ -23,7 +23,6 @@ namespace Facebook_view
             db.makeConnection();
             db.createDatabase();
             
-            
             //delete table
             //db.clearAllPosts();
             //insert some posts to database
@@ -34,7 +33,6 @@ namespace Facebook_view
             feed.Adapter = new CustomAdapter(this, posts);
 
             var fabButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
-
             fabButton.Click += FabButton_Click;
         }
 
