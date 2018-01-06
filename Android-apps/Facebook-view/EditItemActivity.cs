@@ -31,7 +31,11 @@ namespace Facebook_view
             //whatś inside intent
             var itemId = Intent.Extras.GetInt("id");
             //ask item from database
-            var item = postsDB.Posts.getPostById(itemId);
+            var db = new postsDB();
+            db.makeConnection();
+            var item = db.getPostById(itemId);
+            
+            //var item = postsDB.Posts.getPostById(itemId);
             //find controls
             name = FindViewById<TextView>(Resource.Id.txtName2);
             status = FindViewById<TextView>(Resource.Id.txtStatus2);
@@ -61,12 +65,15 @@ namespace Facebook_view
                 post.Timestamp = postTimeStamp;
                 post.Status = status.Text;
                 post.ProfileImageId = Resource.Drawable.profilePicture;
-                
+
                 //TO-DO take picture from gallery or take shot. 
                 //post.PostImageId = Resource.Drawable.postPicture;
 
+                var db = new postsDB();
+                db.makeConnection();
                 //insert new post to database
-                postsDB.Posts.updateData(post);
+                db.updateData(post);
+                
                 Toast toast = Toast.MakeText(this, "Your post has been edited", ToastLength.Long);
                 toast.Show();
                 name.Text = "";

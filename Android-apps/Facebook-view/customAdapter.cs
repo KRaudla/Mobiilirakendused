@@ -85,7 +85,10 @@ namespace Facebook_view
                             context.StartActivity(editItemActivity);
                             break;
                         case "Kustuta":
-                            postsDB.Posts.deletePostById((int)itemButton.Tag);//delete post from database
+                            var db = new postsDB();
+                            db.makeConnection();
+
+                            db.deletePostById((int)itemButton.Tag);//delete post from database
                             this.items.RemoveAt(position);//delete item from adapter list
                             context.RunOnUiThread(() => this.NotifyDataSetChanged());//update adapter and listview
                             Android.Widget.Toast.MakeText(context, "Postitus kustutatud", Android.Widget.ToastLength.Short).Show();

@@ -98,7 +98,11 @@ namespace Facebook_view
                 //post.PostImageId = Resource.Drawable.postPicture;
 
                 //insert new post to database
-                postsDB.Posts.insertUpdateData(post);
+                //postsDB.Posts.insertUpdateData(post);
+                var db = new postsDB();
+                db.makeConnection();
+                db.insertUpdateData(post);
+
                 Toast toast = Toast.MakeText(this, "Your post has been added", ToastLength.Long);
                 toast.Show();
                 name.Text = "";

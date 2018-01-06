@@ -15,24 +15,18 @@ namespace Facebook_view
 {
     public class postsDB
     {
-        private static readonly postsDB _postsDB = new postsDB();
+        //private static readonly postsDB _postsDB = new postsDB();
         SQLiteConnection dbConnection;
         private const string _dbName = "db_sqlite.db";
 
-        /*public postsDB()
+
+        public void makeConnection()
         {
             var docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
             var path = System.IO.Path.Combine(docsFolder, _dbName);
             dbConnection = new SQLiteConnection(path);
-        }*/
-        public static postsDB Posts
-        {
-            get
-            {
-                return _postsDB;
-            }
-
         }
+
         //Create database
         public string createDatabase()
         {
@@ -148,12 +142,12 @@ namespace Facebook_view
             post6.ProfileImageId = Resource.Drawable.profilePicture;
             //post6.PostImageId = Resource.Drawable.postPicture;
 
-            postsDB._postsDB.insertUpdateData(post);
-            postsDB._postsDB.insertUpdateData(post2);
-            postsDB._postsDB.insertUpdateData(post3);
-            postsDB._postsDB.insertUpdateData(post4);
-            postsDB._postsDB.insertUpdateData(post5);
-            postsDB._postsDB.insertUpdateData(post6);
+            dbConnection.Insert(post);
+            dbConnection.Insert(post2);
+            dbConnection.Insert(post3);
+            dbConnection.Insert(post4);
+            dbConnection.Insert(post5);
+            dbConnection.Insert(post6);
 
         }
 

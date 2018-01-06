@@ -19,14 +19,17 @@ namespace Facebook_view
             SetContentView(Resource.Layout.feed);
 
             //create database and table
-            postsDB.Posts.createDatabase();
+            var db = new postsDB();
+            db.makeConnection();
+            db.createDatabase();
+            
             
             //delete table
-            //postsDB.Posts.clearAllPosts();
+            //db.clearAllPosts();
             //insert some posts to database
-            //postsDB.Posts.initPostDB();
+            //db.initPostDB();
 
-            var posts = postsDB.Posts.getAllPosts();
+            var posts = db.getAllPosts();
             var feed = FindViewById<ListView>(Resource.Id.listviewFeed);
             feed.Adapter = new CustomAdapter(this, posts);
 
