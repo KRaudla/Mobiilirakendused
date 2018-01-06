@@ -15,10 +15,8 @@ namespace Facebook_view
 {
     public class postsDB
     {
-        //private static readonly postsDB _postsDB = new postsDB();
         SQLiteConnection dbConnection;
-        private const string _dbName = "db_sqlite.db";
-
+        private const string _dbName = "db_sqlite.s3db";
 
         public void makeConnection()
         {
@@ -28,14 +26,10 @@ namespace Facebook_view
         }
 
         //Create database
-        public string createDatabase()
+        public string createTable()
         {
             try
             {
-                //create document folder and path
-                var docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-                var path = System.IO.Path.Combine(docsFolder, "db_sqlite.db");
-                dbConnection = new SQLiteConnection(path);
                 dbConnection.CreateTable<Post>();
                 return "Database for posts created";
             }
@@ -48,36 +42,25 @@ namespace Facebook_view
         public List<Post> getAllPosts()
         {
             var posts = new List<Post>();
-            IEnumerable<Post> postsTable = dbConnection.Table<Post>();
-            foreach (Post a in postsTable)
+
+            var query = dbConnection.Table<Post>();
+            foreach (var i in query)
             {
-                posts.Add(a);
+                posts.Add(i);
             }
             return posts;
         }
-        //insert
+        //update
         public void updateData(Post post)
         {
             dbConnection.Update(post);
         }
-        //insert and update post
-        public string insertUpdateData(Post post)
+        //insert
+        public void insertData (Post post)
         {
-            try
-            {
-                int inserted = dbConnection.Insert(post); //1 if successfully inserted
-                if (inserted==0)
-                {
-                    dbConnection.Update(post);
-                }
-               
-                return "Single data file inserted or updated";
-            }
-            catch (SQLiteException ex)
-            {
-                return ex.Message;
-            }
+            dbConnection.Insert(post);
         }
+               
         //delete table
         public void clearAllPosts()
         {
@@ -88,11 +71,14 @@ namespace Facebook_view
         {
             return dbConnection.Table<Post>().FirstOrDefault(x => x.ID == id);
         }
+
         //delete post by id
         public void deletePostById(int id)
         {
             dbConnection.Delete<Post>(id);
         }
+
+        //initialize posts
         public void initPostDB()
         {
             var post = new Post();
@@ -143,15 +129,6 @@ namespace Facebook_view
             post6.ProfileImageId = Resource.Drawable.profilePicture;
             //post6.PostImageId = Resource.Drawable.postPicture;
 
-            /*var db = new postsDB();
-            db.makeConnection();
-            db.insertUpdateData(post);
-            db.insertUpdateData(post2);
-            db.insertUpdateData(post3);
-            db.insertUpdateData(post4);
-            db.insertUpdateData(post5);
-            db.insertUpdateData(post6);
-            */
             dbConnection.Insert(post);
             dbConnection.Insert(post2);
             dbConnection.Insert(post3);

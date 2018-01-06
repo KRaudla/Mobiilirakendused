@@ -63,14 +63,12 @@ namespace Facebook_view
                 post.Timestamp = postTimeStamp;
                 post.Status = status.Text;
                 post.ProfileImageId = Resource.Drawable.profilePicture;
-                //TO-DO take picture from gallery or take shot. 
-                //post.PostImageId = Resource.Drawable.postPicture;
-
-                //insert new post to database
-                //postsDB.Posts.insertUpdateData(post);
+                
                 var db = new postsDB();
                 db.makeConnection();
-                db.insertUpdateData(post);
+                var a = db.getAllPosts();
+                db.insertData(post);
+                var b = db.getAllPosts();
 
                 Toast toast = Toast.MakeText(this, "Your post has been added", ToastLength.Long);
                 toast.Show();

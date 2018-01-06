@@ -51,10 +51,7 @@ namespace Facebook_view
                 view.FindViewById<TextView>(Resource.Id.txtTimestamp).Text = items[position].Timestamp.ToString();
                 view.FindViewById<TextView>(Resource.Id.txtStatus).Text = items[position].Status.ToString();
                 view.FindViewById<ImageView>(Resource.Id.postImage).SetImageResource(items[position].PostImageId);
-                view.FindViewById<ImageView>(Resource.Id.profileImage).SetImageResource(items[position].ProfileImageId);
-                
-                
-
+            view.FindViewById<ImageView>(Resource.Id.profileImage).SetImageResource(items[position].ProfileImageId);
         //item button
             var itemButton = view.FindViewById<ImageButton>(Resource.Id.btnItemMenu);
             //avoid stealing itemclick focus
@@ -88,9 +85,12 @@ namespace Facebook_view
                             var db = new postsDB();
                             db.makeConnection();
 
-                            db.deletePostById((int)itemButton.Tag);//delete post from database
+                            int id = (int)itemButton.Tag;//get id from tag
+                            db.deletePostById(id);//delete post from database
+
                             this.items.RemoveAt(position);//delete item from adapter list
                             context.RunOnUiThread(() => this.NotifyDataSetChanged());//update adapter and listview
+
                             Android.Widget.Toast.MakeText(context, "Postitus kustutatud", Android.Widget.ToastLength.Short).Show();
                             
                             break;

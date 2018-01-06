@@ -64,14 +64,11 @@ namespace Facebook_view
                 post.Status = status.Text;
                 post.ProfileImageId = Resource.Drawable.profilePicture;
 
-                //TO-DO take picture from gallery or take shot. 
-                //post.PostImageId = Resource.Drawable.postPicture;
-
                 var db = new postsDB();
                 db.makeConnection();
-                //insert new post to database
+                //update post
                 db.updateData(post);
-                
+
                 Toast toast = Toast.MakeText(this, "Your post has been edited", ToastLength.Long);
                 toast.Show();
                 name.Text = "";

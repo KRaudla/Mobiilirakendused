@@ -21,12 +21,12 @@ namespace Facebook_view
             //create database and table
             var db = new postsDB();
             db.makeConnection();
-            db.createDatabase();
+            db.createTable();
             
             //delete table
-            db.clearAllPosts();
+            //db.clearAllPosts();
             //insert some posts to database
-            db.initPostDB();
+            //db.initPostDB();
 
             var posts = db.getAllPosts();
             var feed = FindViewById<ListView>(Resource.Id.listviewFeed);
