@@ -38,7 +38,8 @@ namespace Facebook_view
 
         private void FabButton_Click(object sender, System.EventArgs e)
         {
-            var intent = new Intent(this, typeof(NewItemActivity));
+            //var intent = new Intent(this, typeof(NewItemActivity));
+            var intent = new Intent(this, typeof(Fragment1));
             this.StartActivity(intent);
         }
     }
