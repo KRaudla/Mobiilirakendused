@@ -19,7 +19,6 @@ namespace Facebook_view
         private TextView name;
         private TextView status;
         private ImageView profilePicture;
-        private ImageView postPicture;
         private Button btnEdit;
         private DateTime postTimeStamp;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -40,7 +39,6 @@ namespace Facebook_view
             name = FindViewById<TextView>(Resource.Id.txtName2);
             status = FindViewById<TextView>(Resource.Id.txtStatus2);
             profilePicture = FindViewById<ImageView>(Resource.Id.profileImage2);
-            postPicture = FindViewById<ImageView>(Resource.Id.postImage2);
             btnEdit = FindViewById<Button>(Resource.Id.btnEditPost);
             postTimeStamp = DateTime.Now;
             //set values to controls
@@ -60,7 +58,7 @@ namespace Facebook_view
             {
                 //new post object to save values
                 var post = new Post();
-                post.Id= Intent.Extras.GetInt("id");//get post id from intent
+                post.ID= Intent.Extras.GetInt("id");//get post id from intent
                 post.Name = name.Text;
                 post.Timestamp = postTimeStamp;
                 post.Status = status.Text;

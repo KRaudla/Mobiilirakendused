@@ -62,7 +62,7 @@ namespace Facebook_view
             itemButton.FocusableInTouchMode = false;
             itemButton.Clickable = true;
 
-            itemButton.Tag = items[position].Id;
+            itemButton.Tag = items[position].ID;
 
             itemButton.Click += (sender, args) =>
             {

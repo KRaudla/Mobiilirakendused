@@ -24,9 +24,9 @@ namespace Facebook_view
             db.createDatabase();
             
             //delete table
-            //db.clearAllPosts();
+            db.clearAllPosts();
             //insert some posts to database
-            //db.initPostDB();
+            db.initPostDB();
 
             var posts = db.getAllPosts();
             var feed = FindViewById<ListView>(Resource.Id.listviewFeed);
@@ -39,7 +39,7 @@ namespace Facebook_view
         private void FabButton_Click(object sender, System.EventArgs e)
         {
             //var intent = new Intent(this, typeof(NewItemActivity));
-            var intent = new Intent(this, typeof(Fragment1));
+            var intent = new Intent(this, typeof(NewItemActivity));
             this.StartActivity(intent);
         }
     }

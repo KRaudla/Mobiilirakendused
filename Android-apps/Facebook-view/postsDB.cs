@@ -48,9 +48,10 @@ namespace Facebook_view
         public List<Post> getAllPosts()
         {
             var posts = new List<Post>();
-            foreach (var post in dbConnection.Table<Post>())
+            IEnumerable<Post> postsTable = dbConnection.Table<Post>();
+            foreach (Post a in postsTable)
             {
-                posts.Add(post);
+                posts.Add(a);
             }
             return posts;
         }
@@ -85,7 +86,7 @@ namespace Facebook_view
         // get post by id
         public Post getPostById(int id)
         {
-            return dbConnection.Table<Post>().FirstOrDefault(x => x.Id == id);
+            return dbConnection.Table<Post>().FirstOrDefault(x => x.ID == id);
         }
         //delete post by id
         public void deletePostById(int id)
@@ -142,13 +143,22 @@ namespace Facebook_view
             post6.ProfileImageId = Resource.Drawable.profilePicture;
             //post6.PostImageId = Resource.Drawable.postPicture;
 
+            /*var db = new postsDB();
+            db.makeConnection();
+            db.insertUpdateData(post);
+            db.insertUpdateData(post2);
+            db.insertUpdateData(post3);
+            db.insertUpdateData(post4);
+            db.insertUpdateData(post5);
+            db.insertUpdateData(post6);
+            */
             dbConnection.Insert(post);
             dbConnection.Insert(post2);
             dbConnection.Insert(post3);
             dbConnection.Insert(post4);
             dbConnection.Insert(post5);
             dbConnection.Insert(post6);
-
+            
         }
 
     }
