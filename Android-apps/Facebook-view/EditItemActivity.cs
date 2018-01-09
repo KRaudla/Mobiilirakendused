@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V7.App;
+using Android.Views.InputMethods;
 
 namespace Facebook_view
 {
@@ -45,8 +46,14 @@ namespace Facebook_view
             name.Text = item.Name;
             status.Text = item.Status;
             profilePicture.SetImageResource(Resource.Drawable.profilePicture);//default profile picture
-            //TO-DO...
-            //postPicture.SetImageResource
+            //set focus to name
+            name.RequestFocus();
+            //show keyboard
+            InputMethodManager inputMethodManager = Application.GetSystemService(Context.InputMethodService) as InputMethodManager;
+            inputMethodManager.ShowSoftInput(name, ShowFlags.Forced);
+            inputMethodManager.ToggleSoftInput(ShowFlags.Forced, HideSoftInputFlags.ImplicitOnly);
+            //hide keyboard
+            //inputMethodManager.HideSoftInputFromWindow(name.WindowToken, HideSoftInputFlags.None);
 
             //button listener
             btnEdit.Click += BtnEdit_Click;

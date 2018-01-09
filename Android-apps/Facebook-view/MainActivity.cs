@@ -7,12 +7,17 @@ using SQLite;
 using Android.Views;
 using Android.Support.V7.App;
 using Android.Support.Design.Widget;
+using Android.Support.V7.Widget;
 
 namespace Facebook_view
 {
     [Activity(Label = "Facebook_view", MainLauncher = true, Theme = "@style/Theme.DesignDemo")]
     public class MainActivity : AppCompatActivity
     {
+        RecyclerView mRecyclerView;
+        RecyclerView.LayoutManager mLayoutManager;
+        RecyclerView.Adapter mAdapter;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -22,11 +27,21 @@ namespace Facebook_view
             var db = new postsDB();
             db.makeConnection();
             db.createTable();
-            
+
             //delete table
             //db.clearAllPosts();
             //insert some posts to database
             //db.initPostDB();
+
+            
+            // Get our RecyclerView layout:
+            var mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
+            mLayoutManager = new LinearLayoutManager(this);
+            mRecyclerView.SetLayoutManager(mLayoutManager);
+            // Plug the adapter into the RecyclerView:
+            
+
+
 
             var posts = db.getAllPosts();
             var feed = FindViewById<ListView>(Resource.Id.listviewFeed);
@@ -42,6 +57,8 @@ namespace Facebook_view
             var intent = new Intent(this, typeof(NewItemActivity));
             this.StartActivity(intent);
         }
+
     }
+    
 }
 

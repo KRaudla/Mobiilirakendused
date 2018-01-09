@@ -12,7 +12,7 @@ using Android.Widget;
 using Android.Support.V7.App;
 using Android.Graphics;
 using System.IO;
-
+using Android.Views.InputMethods;
 
 namespace Facebook_view
 {
@@ -47,6 +47,12 @@ namespace Facebook_view
             //set values to controls
             postTimeStamp = DateTime.Now;
             profilePicture.SetImageResource(Resource.Drawable.profilePicture);//default profile picture
+
+            //show keyboard
+            name.RequestFocus();
+            InputMethodManager inputMethodManager = Application.GetSystemService(Context.InputMethodService) as InputMethodManager;
+            inputMethodManager.ShowSoftInput(name, ShowFlags.Forced);
+            inputMethodManager.ToggleSoftInput(ShowFlags.Forced, HideSoftInputFlags.ImplicitOnly);
             //button listener
             btnAdd.Click += BtnAdd_Click;
         }
