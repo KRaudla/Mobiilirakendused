@@ -78,6 +78,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryRecyclerView\Category.cs" />
+    <Compile Include="CategoryRecyclerView\CategoryAdapter.cs" />
+    <Compile Include="CategoryRecyclerView\CategoryItemHolder.cs" />
     <Compile Include="customAdapter.cs" />
     <Compile Include="EditItemActivity.cs" />
     <Compile Include="MainActivity.cs" />
