@@ -15,7 +15,6 @@ namespace Facebook_view
 {
     public class CategoryItemHolder : RecyclerView.ViewHolder
     {
-
         public TextView CategoryTextView { get; set; }
         public ImageView CategoryImageView { get; set; }
     
@@ -23,8 +22,7 @@ namespace Facebook_view
         {
             CategoryTextView = itemView.FindViewById<TextView>(Resource.Id.categoryTextView);
             CategoryImageView = itemView.FindViewById<ImageView>(Resource.Id.categoryImageView);
- 
-            itemView.Click += (s,e) => listener(Position);
+            itemView.Click += (sender, e) => listener(base.LayoutPosition);
         }
     }
 }
