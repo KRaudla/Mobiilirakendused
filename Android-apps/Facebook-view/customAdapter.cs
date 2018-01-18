@@ -18,12 +18,12 @@ namespace Facebook_view
 
     {
         List<Post> items;
-        Activity context;
+        //Activity context;
         
 
-        public CustomAdapter(Activity context, List<Post> items) : base()
+        public CustomAdapter(List<Post> items) : base()
         {
-            this.context = context;
+            //this.context = context;
             this.items = items;
         }
 
@@ -46,7 +46,7 @@ namespace Facebook_view
         {
             View view = convertView;
             if (view == null)
-                view = context.LayoutInflater.Inflate(Resource.Layout.feedItem, null);
+                view = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.feedItem, null);
                 view.FindViewById<TextView>(Resource.Id.txtFullName).Text = items[position].Name;
                 view.FindViewById<TextView>(Resource.Id.txtTimestamp).Text = items[position].Timestamp.ToString();
                 view.FindViewById<TextView>(Resource.Id.txtStatus).Text = items[position].Status.ToString();
@@ -64,7 +64,7 @@ namespace Facebook_view
             itemButton.Click += (sender, args) =>
             {
                 //int itemId = (int)itemButton.Tag;
-                PopupMenu menu = new PopupMenu(this.context, itemButton);
+                PopupMenu menu = new PopupMenu(parent.Context, itemButton);
                 menu.Inflate(Resource.Menu.item_menu);
                 menu.Show();
 
@@ -74,12 +74,12 @@ namespace Facebook_view
                     switch (arg1.Item.TitleFormatted.ToString())
                     {
                         case "Muuda":
-                            var editItemActivity = new Intent(context, typeof(EditItemActivity));
+                            var editItemActivity = new Intent(parent.Context, typeof(EditItemActivity));
                             Bundle bundleMe = new Bundle();
                             bundleMe.PutInt("id",(int)itemButton.Tag);
                             //pass item id to next activity
                             editItemActivity.PutExtras(bundleMe);
-                            context.StartActivity(editItemActivity);
+                            parent.Context.StartActivity(editItemActivity);
                             break;
                         case "Kustuta":
                             var db = new postsDB();
@@ -89,9 +89,9 @@ namespace Facebook_view
                             db.deletePostById(id);//delete post from database
 
                             this.items.RemoveAt(position);//delete item from adapter list
-                            context.RunOnUiThread(() => this.NotifyDataSetChanged());//update adapter and listview
+                            //context.RunOnUiThread(() => this.NotifyDataSetChanged());//update adapter and listview
 
-                            Android.Widget.Toast.MakeText(context, "Postitus kustutatud", Android.Widget.ToastLength.Short).Show();
+                            Android.Widget.Toast.MakeText(parent.Context, "Postitus kustutatud", Android.Widget.ToastLength.Short).Show();
                             
                             break;
                     }

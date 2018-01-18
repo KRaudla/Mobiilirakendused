@@ -86,6 +86,9 @@
     <Compile Include="CategoryRecyclerView\CategoryItemHolder.cs" />
     <Compile Include="customAdapter.cs" />
     <Compile Include="EditItemActivity.cs" />
+    <Compile Include="Fragments\Fragment3.cs" />
+    <Compile Include="Fragments\Fragment2.cs" />
+    <Compile Include="Fragments\Fragment1.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="NewItemActivity.cs" />
     <Compile Include="postsDB.cs" />
@@ -94,6 +97,7 @@
     <Compile Include="Post.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
+    <Compile Include="TabAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -116,6 +120,15 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\category_item.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Fragment1.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Fragment2.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Fragment3.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
