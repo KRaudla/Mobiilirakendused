@@ -17,9 +17,6 @@ namespace Facebook_view.Fragments
 {
     public class Fragment1 : SupportFragment
     {
-        RecyclerView _recyclerView;
-        RecyclerView.LayoutManager _layoutManager;
-        CategoryAdapter _adapter;
         View view;
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -31,23 +28,29 @@ namespace Facebook_view.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            // Use this to return your custom view for this Fragment
+            //return categories
             view = inflater.Inflate(Resource.Layout.Fragment1, container, false);
-            _recyclerView = view.FindViewById<RecyclerView>(Resource.Id.recyclerView);
+            var recyclerView = view.FindViewById<RecyclerView>(Resource.Id.recyclerView);
             var categories = new Category().GenerateDummyData();
-            _adapter = new CategoryAdapter(categories);
-            _recyclerView.SetAdapter(_adapter);
-            _layoutManager = new LinearLayoutManager(view.Context, LinearLayoutManager.Horizontal, false);
-            _recyclerView.SetLayoutManager(_layoutManager);
+            var adapter = new CategoryAdapter(categories);
+            recyclerView.SetAdapter(adapter);
+            var layoutManager = new LinearLayoutManager(view.Context, LinearLayoutManager.Horizontal, false);
+            recyclerView.SetLayoutManager(layoutManager);
+            adapter.ItemClick += _adapter_ItemClick;
 
-            _adapter.ItemClick += _adapter_ItemClick;
 
+            //REPLACE CUSTOM ADAPTER WITH RECYCLERVIEW ADAPTER
+            //return posts
+            /*
             var db = new postsDB();
             db.makeConnection();
             var posts = db.getAllPosts();
-            var feed = view.FindViewById<ListView>(Resource.Id.listviewFeed);
-            feed.Adapter = new CustomAdapter(posts);
-
+            var recyclerview2 = view.FindViewById<RecyclerView>(Resource.Id.listviewFeed);
+            var adapter2 = new CustomAdapter(posts);
+            recyclerview2.SetAdapter(adapter2);
+            var layoutManager2 = new LinearLayoutManager(view.Context, LinearLayoutManager.Vertical, false);
+            recyclerView.SetLayoutManager(layoutManager2);
+            */
             return view;
         }
 

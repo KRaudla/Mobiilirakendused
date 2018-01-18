@@ -25,9 +25,9 @@ namespace Facebook_view.CategoryRecyclerView
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            var movieViewHolder = holder as CategoryItemHolder;
-            movieViewHolder.CategoryTextView.Text = _categories[position].Name;
-            movieViewHolder.CategoryImageView.SetImageResource(_categories[position].ImageId);
+            var categoryViewHolder = holder as CategoryItemHolder;
+            categoryViewHolder.CategoryTextView.Text = _categories[position].Name;
+            categoryViewHolder.CategoryImageView.SetImageResource(_categories[position].ImageId);
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

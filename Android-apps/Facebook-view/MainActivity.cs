@@ -12,10 +12,12 @@ using Facebook_view.CategoryRecyclerView;
 using Android.Support.V4.View;
 using System;
 using Facebook_view.Fragments;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using SupportActionBar = Android.Support.V7.App.ActionBar;
 
 namespace Facebook_view
 {
-    [Activity(Label = "Facebook_view", MainLauncher = true, Theme = "@style/Theme.DesignDemo")]
+    [Activity(Label = "Rahalugeja", MainLauncher = true, Theme = "@style/Theme.DesignDemo")]
     public class MainActivity : AppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -36,6 +38,14 @@ namespace Facebook_view
             //db.clearAllPosts();
             //insert some posts to database
             //db.initPostDB();
+
+            SupportToolbar toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+
+            //Enable support action bar to display home icon
+            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.plus);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
 
             var fabButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fabButton.Click += FabButton_Click;

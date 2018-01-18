@@ -89,7 +89,7 @@ namespace Facebook_view
                             db.deletePostById(id);//delete post from database
 
                             this.items.RemoveAt(position);//delete item from adapter list
-                            //context.RunOnUiThread(() => this.NotifyDataSetChanged());//update adapter and listview
+                            this.NotifyDataSetChanged();//update adapter and listview
 
                             Android.Widget.Toast.MakeText(parent.Context, "Postitus kustutatud", Android.Widget.ToastLength.Short).Show();
                             
