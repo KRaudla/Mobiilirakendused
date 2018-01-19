@@ -19,6 +19,7 @@ namespace Facebook_view
         public TextView Category { get; set; }
         public TextView TimeStamp { get; set; }
         public TextView Comment { get; set; }
+        public TextView Amount { get; set; }
 
         public FeedItemHolder(View itemView) : base(itemView)
         {
@@ -26,7 +27,7 @@ namespace Facebook_view
             Category = itemView.FindViewById<TextView>(Resource.Id.Name);
             TimeStamp = itemView.FindViewById<TextView>(Resource.Id.Timestamp);
             Comment = itemView.FindViewById<TextView>(Resource.Id.Comment);
-            //Amount = itemView.FindViewById<TextView>(Resource.Id.Comment);
+            Amount = itemView.FindViewById<TextView>(Resource.Id.Amount);
         }
     }
 }

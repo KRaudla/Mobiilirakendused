@@ -40,6 +40,7 @@ namespace Facebook_view.FeedRecyclerView
             holder.Category.Text = item.Category;//item name
             holder.TimeStamp.Text = item.Timestamp.ToString("dd.MM.yyyy");// timestamp
             holder.Comment.Text = item.Comment; //comment
+            holder.Amount.Text = item.Amount.ToString();
         }
 
         public override int ItemCount => _items.Count;
