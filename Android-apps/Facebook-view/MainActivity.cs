@@ -31,13 +31,13 @@ namespace Facebook_view
             tabs.SetupWithViewPager(viewPager);
 
             //create database and table
-            var db = new postsDB();
+            var db = new ItemDB();
             db.makeConnection();
             db.createTable();
             //delete table
-            //db.clearAllPosts();
+            //db.ClearAllItems();
             //insert some posts to database
-            //db.initPostDB();
+            //db.InitItems();
 
             SupportToolbar toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
@@ -47,25 +47,19 @@ namespace Facebook_view
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
 
-            var fabButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
-            fabButton.Click += FabButton_Click;
+            //var fabButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            //fabButton.Click += FabButton_Click;
         }
 
         private void SetUpViewPager(ViewPager viewPager)
         {
             TabAdapter adapter = new TabAdapter(SupportFragmentManager);
-            adapter.AddFragment(new Fragment1(), "Päevaraamat");
+            adapter.AddFragment(new Fragment1(), "Koond");
             adapter.AddFragment(new Fragment2(), "Tulud");
             adapter.AddFragment(new Fragment3(), "Kulud");
             viewPager.Adapter = adapter;
         }
-
-        private void FabButton_Click(object sender, System.EventArgs e)
-        {
-            //var intent = new Intent(this, typeof(NewItemActivity));
-            var intent = new Intent(this, typeof(NewItemActivity));
-            this.StartActivity(intent);
-        }        
+        
     }
     
 }
