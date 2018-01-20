@@ -25,7 +25,7 @@ namespace Facebook_view
         {
             CategoryImage = itemView.FindViewById<ImageView>(Resource.Id.Image);
             Category = itemView.FindViewById<TextView>(Resource.Id.Name);
-            TimeStamp = itemView.FindViewById<TextView>(Resource.Id.Timestamp);
+            TimeStamp = itemView.FindViewById<TextView>(Resource.Id.TimeStamp);
             Comment = itemView.FindViewById<TextView>(Resource.Id.Comment);
             Amount = itemView.FindViewById<TextView>(Resource.Id.Amount);
         }
