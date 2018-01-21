@@ -14,12 +14,17 @@ using System;
 using Facebook_view.Fragments;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using SupportActionBar = Android.Support.V7.App.ActionBar;
+using Facebook_view.FeedRecyclerView;
+using System.Drawing;
 
 namespace Facebook_view
 {
     [Activity(Label = "Rahalugeja", MainLauncher = true, Theme = "@style/Theme.DesignDemo")]
     public class MainActivity : AppCompatActivity
     {
+        BottomSheetBehavior bottomSheetBehavior;
+        FloatingActionButton fabButton;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -46,12 +51,83 @@ namespace Facebook_view
             SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.plus);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
+            //Modal bottom sheet
+            LinearLayout sheet = FindViewById<LinearLayout>(Resource.Id.bottom_sheet);            
+            bottomSheetBehavior = BottomSheetBehavior.From(sheet);
+            bottomSheetBehavior.PeekHeight = 0;
+            bottomSheetBehavior.Hideable = true;
+            bottomSheetBehavior.SetBottomSheetCallback(new BottomCallBack());
 
-            //var fabButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
-            //fabButton.Click += FabButton_Click;
+
+            //action button to open modal bottom sheet
+            fabButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            fabButton.Click += FabButton_Click;
+
+
+            //Test fill bottom sheet recyclerview
+            List<Item> items = new List<Item>();
+            var a = new Item();
+            a.Category = "Lisa uus tulu";
+            a.CategoryImage = Resource.Drawable.kodu48;
+            var b = new Item();
+            b.Category = "Lisa uus kulu";
+            b.CategoryImage = Resource.Drawable.ilu48;
+            var c = new Item();
+            c.Category = "Lisa säästudesse";
+            c.CategoryImage = Resource.Drawable.meelelahutus48;
+            var d = new Item();
+            d.Category = "Võta säästudest";
+            d.CategoryImage = Resource.Drawable.muu48;
+
+            items.Add(a);
+            items.Add(b);
+            items.Add(c);
+            items.Add(d);
+
+
+            var bottomfeed = FindViewById<RecyclerView>(Resource.Id.bottomRecyclerView);
+            var bottomadapter = new FeedAdapter(items);
+            bottomfeed.SetAdapter(bottomadapter);
+            var feedLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.Vertical, false);
+            bottomfeed.SetLayoutManager(feedLayoutManager);
+
+
         }
 
-        private void SetUpViewPager(ViewPager viewPager)
+        private void FabButton_Click(object sender, EventArgs e)
+        {
+
+            if (bottomSheetBehavior.State == 3 || bottomSheetBehavior.State == 2)
+            {
+                bottomSheetBehavior.State = BottomSheetBehavior.StateCollapsed;
+                fabButton.SetImageResource(Resource.Drawable.plus);
+            }
+            if (bottomSheetBehavior.State == 4)
+            {
+                bottomSheetBehavior.State = BottomSheetBehavior.StateExpanded;
+                fabButton.SetImageResource(Resource.Drawable.ic_action_content_save);
+            }
+
+        }
+
+        public class BottomCallBack : BottomSheetBehavior.BottomSheetCallback
+        {
+            public override void OnSlide(View bottomSheet, float slideOffset)
+            {
+                //Sliding
+            }
+
+            public override void OnStateChanged(View bottomSheet, int newState)
+            {
+                //State changed
+                BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.From(bottomSheet);
+                if (newState == BottomSheetBehavior.StateDragging)
+                    bottomSheetBehavior.State = BottomSheetBehavior.StateExpanded;
+                if (newState == 2)
+                    bottomSheetBehavior.State = 3;
+            }
+        }
+            private void SetUpViewPager(ViewPager viewPager)
         {
             TabAdapter adapter = new TabAdapter(SupportFragmentManager);
             adapter.AddFragment(new Fragment1(), "Koond");

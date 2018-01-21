@@ -49,6 +49,8 @@ namespace Facebook_view.Fragments
             feed.SetAdapter(feedadapter);
             var feedLayoutManager = new LinearLayoutManager(view.Context, LinearLayoutManager.Vertical, false);
             feed.SetLayoutManager(feedLayoutManager);
+
+
             
             return view;
         }
