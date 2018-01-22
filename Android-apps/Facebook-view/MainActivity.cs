@@ -22,14 +22,20 @@ namespace Facebook_view
     [Activity(Label = "Rahalugeja", MainLauncher = true, Theme = "@style/Theme.DesignDemo")]
     public class MainActivity : AppCompatActivity
     {
-        BottomSheetBehavior bottomSheetBehavior;
         FloatingActionButton fabButton;
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.feed);
 
+            //Set toolbar
+            SupportToolbar toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+            //Enable support action bar to display home icon
+            //SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.plus);
+            //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
+            //set tabs
             TabLayout tabs = FindViewById<TabLayout>(Resource.Id.tabs);
             ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.viewpager);
             SetUpViewPager(viewPager);
@@ -44,90 +50,32 @@ namespace Facebook_view
             //insert some posts to database
             //db.InitItems();
 
-            SupportToolbar toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
-            SetSupportActionBar(toolbar);
-
-            //Enable support action bar to display home icon
-            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.plus);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-
-            //Modal bottom sheet
-            LinearLayout sheet = FindViewById<LinearLayout>(Resource.Id.bottom_sheet);            
-            bottomSheetBehavior = BottomSheetBehavior.From(sheet);
-            bottomSheetBehavior.PeekHeight = 0;
-            bottomSheetBehavior.Hideable = true;
-            bottomSheetBehavior.SetBottomSheetCallback(new BottomCallBack());
-
-
             //action button to open modal bottom sheet
             fabButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fabButton.Click += FabButton_Click;
+        }
 
-
-            //Test fill bottom sheet recyclerview
-            List<Item> items = new List<Item>();
-            var a = new Item();
-            a.Category = "Lisa uus tulu";
-            a.CategoryImage = Resource.Drawable.kodu48;
-            var b = new Item();
-            b.Category = "Lisa uus kulu";
-            b.CategoryImage = Resource.Drawable.ilu48;
-            var c = new Item();
-            c.Category = "Lisa säästudesse";
-            c.CategoryImage = Resource.Drawable.meelelahutus48;
-            var d = new Item();
-            d.Category = "Võta säästudest";
-            d.CategoryImage = Resource.Drawable.muu48;
-
-            items.Add(a);
-            items.Add(b);
-            items.Add(c);
-            items.Add(d);
-
-
-            var bottomfeed = FindViewById<RecyclerView>(Resource.Id.bottomRecyclerView);
-            var bottomadapter = new FeedAdapter(items);
+        private void FabButton_Click(object sender, EventArgs e)
+        {
+            //Modal Bottom Sheet
+            BottomSheetDialog bottomSheetDiaolog = new BottomSheetDialog(this);
+            View view = LayoutInflater.Inflate(Resource.Layout.BottomSheet, null);
+            
+            //generate bottom sheet items
+            var bottomItems = InitBottomItems();
+            var bottomfeed = view.FindViewById<RecyclerView>(Resource.Id.bottomRecyclerView);
+            var bottomadapter = new BottomAdapter(bottomItems);
             bottomfeed.SetAdapter(bottomadapter);
             var feedLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.Vertical, false);
             bottomfeed.SetLayoutManager(feedLayoutManager);
 
 
+
+            bottomSheetDiaolog.SetContentView(view);
+            bottomSheetDiaolog.Show();
         }
 
-        private void FabButton_Click(object sender, EventArgs e)
-        {
-
-            if (bottomSheetBehavior.State == 3 || bottomSheetBehavior.State == 2)
-            {
-                bottomSheetBehavior.State = BottomSheetBehavior.StateCollapsed;
-                fabButton.SetImageResource(Resource.Drawable.plus);
-            }
-            if (bottomSheetBehavior.State == 4)
-            {
-                bottomSheetBehavior.State = BottomSheetBehavior.StateExpanded;
-                fabButton.SetImageResource(Resource.Drawable.ic_action_content_save);
-            }
-
-        }
-
-        public class BottomCallBack : BottomSheetBehavior.BottomSheetCallback
-        {
-            public override void OnSlide(View bottomSheet, float slideOffset)
-            {
-                //Sliding
-            }
-
-            public override void OnStateChanged(View bottomSheet, int newState)
-            {
-                //State changed
-                BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.From(bottomSheet);
-                if (newState == BottomSheetBehavior.StateDragging)
-                    bottomSheetBehavior.State = BottomSheetBehavior.StateExpanded;
-                if (newState == 2)
-                    bottomSheetBehavior.State = 3;
-            }
-        }
-            private void SetUpViewPager(ViewPager viewPager)
+        private void SetUpViewPager(ViewPager viewPager)
         {
             TabAdapter adapter = new TabAdapter(SupportFragmentManager);
             adapter.AddFragment(new Fragment1(), "Koond");
@@ -135,7 +83,38 @@ namespace Facebook_view
             adapter.AddFragment(new Fragment3(), "Kulud");
             viewPager.Adapter = adapter;
         }
-        
+
+        private List<BottomItem> InitBottomItems()
+        {
+            List<BottomItem> items = new List<BottomItem>();
+            var a = new BottomItem();
+            a.Name = "Lisa tulu";
+            a.Image = Resource.Drawable.arrowRight48;
+            items.Add(a);
+
+            var b = new BottomItem();
+            b.Name = "Lisa kulu";
+            b.Image = Resource.Drawable.arrowRight48;
+            items.Add(b);
+
+            var c = new BottomItem();
+            c.Name = "Pane säästudesse";
+            c.Image = Resource.Drawable.arrowRight48;
+            items.Add(c);
+
+            var d = new BottomItem();
+            d.Name = "Võta säästudest";
+            d.Image = Resource.Drawable.arrowRight48;
+            items.Add(d);
+
+            items.Add(a);
+            items.Add(b);
+            items.Add(c);
+            items.Add(d);
+
+            return items;
+        }
+
     }
     
 }

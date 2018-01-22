@@ -81,6 +81,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BottomRecyclerView\BottomAdapter.cs" />
+    <Compile Include="BottomRecyclerView\BottomItemHolder.cs" />
+    <Compile Include="BottomRecyclerView\BottomItem.cs" />
     <Compile Include="CategoryRecyclerView\Category.cs" />
     <Compile Include="CategoryRecyclerView\CategoryAdapter.cs" />
     <Compile Include="CategoryRecyclerView\CategoryItemHolder.cs" />
@@ -122,6 +125,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Fragment3.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\BottomSheet.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\BottomItem.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -264,6 +273,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\toit48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\arrowRight48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
