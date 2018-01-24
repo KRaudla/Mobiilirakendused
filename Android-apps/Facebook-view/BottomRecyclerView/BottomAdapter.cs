@@ -15,6 +15,8 @@ namespace Facebook_view.FeedRecyclerView
 {
     public class BottomAdapter : RecyclerView.Adapter
     {
+        //Create an Event when user clicks on item
+        public event EventHandler<int> ItemClick;
         List<BottomItem> _items;
 
         public BottomAdapter(List<BottomItem> items)
@@ -26,7 +28,9 @@ namespace Facebook_view.FeedRecyclerView
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             var itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.BottomItem, parent, false);
-            return new BottomItemHolder(itemView);
+            //Create our ViewHolder to cache the layout view references and register
+            //the OnClick event.
+            return new BottomItemHolder(itemView,OnClick);
         }
 
         // Replace the contents of a view (invoked by the layout manager)
@@ -41,5 +45,15 @@ namespace Facebook_view.FeedRecyclerView
         }
 
         public override int ItemCount => _items.Count;
+
+        //This will fire any event handlers that are registered with our ItemClick
+        //event.
+        private void OnClick(int position)
+        {
+            if (ItemClick != null)
+            {
+                ItemClick(this, position);
+            }
+        }
     }
 }

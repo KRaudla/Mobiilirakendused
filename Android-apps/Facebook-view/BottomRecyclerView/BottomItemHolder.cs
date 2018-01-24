@@ -18,10 +18,14 @@ namespace Facebook_view
         public ImageView Image { get; set; }
         public TextView Name { get; set; }
 
-        public BottomItemHolder(View itemView) : base(itemView)
+        public BottomItemHolder(View itemView, Action<int> listener) : base(itemView)
         {
             Image = itemView.FindViewById<ImageView>(Resource.Id.Image);
-            Name = itemView.FindViewById<TextView>(Resource.Id.Name);            
+            Name = itemView.FindViewById<TextView>(Resource.Id.Name);
+
+            //capture itemclick
+            itemView.Click += (sender, e) => listener(base.Position);
+
         }
     }
 }
