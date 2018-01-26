@@ -14,6 +14,7 @@ using System;
 using Facebook_view.Fragments;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using SupportActionBar = Android.Support.V7.App.ActionBar;
+using SupportFragment = Android.Support.V4.App.Fragment;
 using Facebook_view.FeedRecyclerView;
 using System.Drawing;
 
@@ -24,21 +25,25 @@ namespace Facebook_view
     {
         FloatingActionButton fabButton;
         List<BottomItem> bottomItems;
+        BottomSheetDialog bottomSheetDiaolog;
+        SupportToolbar toolbar;
+        TabLayout tabs;
+        ViewPager viewPager;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.feed);
 
             //Set toolbar
-            SupportToolbar toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
+            toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
             //Enable support action bar to display home icon
             //SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.plus);
             //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
             //set tabs
-            TabLayout tabs = FindViewById<TabLayout>(Resource.Id.tabs);
-            ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.viewpager);
+            tabs = FindViewById<TabLayout>(Resource.Id.tabs);
+            viewPager = FindViewById<ViewPager>(Resource.Id.viewpager);
             SetUpViewPager(viewPager);
             tabs.SetupWithViewPager(viewPager);
 
@@ -59,7 +64,7 @@ namespace Facebook_view
         private void FabButton_Click(object sender, EventArgs e)
         {
             //Modal Bottom Sheet
-            BottomSheetDialog bottomSheetDiaolog = new BottomSheetDialog(this);
+            bottomSheetDiaolog = new BottomSheetDialog(this);
             View view = LayoutInflater.Inflate(Resource.Layout.BottomSheet, null);
             
             //generate bottom sheet items
@@ -78,11 +83,38 @@ namespace Facebook_view
 
         private void Bottomadapter_ItemClick(object sender, int e)
         {
-            Toast toast = Toast.MakeText(this, "Valisid "+ bottomItems[e].Name, ToastLength.Short);
-            toast.Show();
-
-            //open fragment or dialog for input
-           
+            //Toast toast = Toast.MakeText(this, "Valisid "+ bottomItems[e].Name, ToastLength.Short);
+            //toast.Show();
+            switch (bottomItems[e].Name)
+            {
+                case "Lisa tulu":
+                    SupportFragment fragment = new NewItemFragment();
+                    var fragmentManager = SupportFragmentManager.BeginTransaction();
+                    fragmentManager.Replace(Resource.Id.fragment_container, fragment);
+                    //out some data into 
+                    Bundle args = new Bundle();
+                    args.PutString("Selection", bottomItems[e].Name.ToString());
+                    fragment.Arguments = args;
+                    //commit 
+                    fragmentManager.Commit();
+                    //hide fab button
+                    fabButton.Visibility = ViewStates.Invisible;
+                    //hide toolbar and tablayout
+                    toolbar.Visibility = ViewStates.Gone;
+                    //tabs.Visibility = ViewStates.Gone;
+                    break;
+                case "Lisa kulu":
+                    break;
+                case "Pane säästudesse":
+                    break;
+                case "Võta säästudest":
+                    break;
+                default:
+                    Toast toast = Toast.MakeText(this, "Action not selected", ToastLength.Short);
+                    break;
+            }
+            //close bottom dialog
+            bottomSheetDiaolog.Dismiss();
         }
 
         private void SetUpViewPager(ViewPager viewPager)

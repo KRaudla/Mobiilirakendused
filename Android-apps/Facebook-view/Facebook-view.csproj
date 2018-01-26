@@ -91,6 +91,7 @@
     <Compile Include="Fragments\Fragment3.cs" />
     <Compile Include="Fragments\Fragment2.cs" />
     <Compile Include="Fragments\Fragment1.cs" />
+    <Compile Include="Fragments\NewItemFragment.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Database\ItemDB.cs" />
     <Compile Include="FeedRecyclerView\FeedItemHolder.cs" />
@@ -131,6 +132,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\BottomItem.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\NewItem.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
