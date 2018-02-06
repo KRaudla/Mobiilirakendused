@@ -10,11 +10,10 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace Facebook_view.Fragments
 {
-    public class NewItemFragment : SupportFragment
+    public class IncomeFragment : DialogFragment
     {
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -26,14 +25,7 @@ namespace Facebook_view.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             // Use this to return your custom view for this Fragment
-            var view = inflater.Inflate(Resource.Layout.NewItem, container, false);
-            //receive data sent to fragment and fill textview
-            if (Arguments != null)
-            {
-                var selection = Arguments.GetString("Selection");
-                view.FindViewById<TextView>(Resource.Id.textView1).Text = selection;
-                
-            }
+            var view = inflater.Inflate(Resource.Layout.AddIncome, container, false);
             return view;
         }
     }

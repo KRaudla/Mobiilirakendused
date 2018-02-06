@@ -88,10 +88,8 @@
     <Compile Include="CategoryRecyclerView\CategoryAdapter.cs" />
     <Compile Include="CategoryRecyclerView\CategoryItemHolder.cs" />
     <Compile Include="FeedRecyclerView\FeedAdapter.cs" />
-    <Compile Include="Fragments\Fragment3.cs" />
-    <Compile Include="Fragments\Fragment2.cs" />
-    <Compile Include="Fragments\Fragment1.cs" />
-    <Compile Include="Fragments\NewItemFragment.cs" />
+    <Compile Include="Fragments\FeedFragment.cs" />
+    <Compile Include="Fragments\IncomeFragment.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Database\ItemDB.cs" />
     <Compile Include="FeedRecyclerView\FeedItemHolder.cs" />
@@ -100,7 +98,6 @@
     <Compile Include="FeedRecyclerView\Item.cs" />
     <Compile Include="Database\SQLite.cs" />
     <Compile Include="Database\SQLiteAsync.cs" />
-    <Compile Include="TabAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -113,19 +110,13 @@
     <AndroidResource Include="Resources\layout\Item.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\feed.axml">
+    <AndroidResource Include="Resources\layout\main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\category_item.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\Fragment1.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Fragment2.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Fragment3.axml">
+    <AndroidResource Include="Resources\layout\feed.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\BottomSheet.axml">
@@ -134,7 +125,7 @@
     <AndroidResource Include="Resources\layout\BottomItem.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\NewItem.axml">
+    <AndroidResource Include="Resources\layout\AddIncome.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -142,6 +133,7 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\menu\" />
     <Folder Include="Resources\mipmap-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
@@ -231,9 +223,6 @@
     <AndroidResource Include="Resources\drawable\ic_more_horiz_white_24dp.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\menu\item_menu.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_action_content_save.png" />
   </ItemGroup>
   <ItemGroup>
@@ -244,9 +233,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\plus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\menu\toolbar_menu.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_add_a_photo_white_24dp.png" />

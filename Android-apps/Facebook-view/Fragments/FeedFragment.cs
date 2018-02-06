@@ -16,7 +16,7 @@ using Facebook_view.FeedRecyclerView;
 
 namespace Facebook_view.Fragments
 {
-    public class Fragment1 : SupportFragment
+    public class FeedFragment : SupportFragment
     {
         View view;
         public override void OnCreate(Bundle savedInstanceState)
@@ -30,7 +30,7 @@ namespace Facebook_view.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             
-            view = inflater.Inflate(Resource.Layout.Fragment1, container, false);
+            view = inflater.Inflate(Resource.Layout.feed, container, false);
 
             //categories
             var categories = new Category().GenerateDummyData();
